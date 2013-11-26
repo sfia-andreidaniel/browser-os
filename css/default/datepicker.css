@@ -1,0 +1,118 @@
+table.DomDatePicker {
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    border: 1px inset #333;
+    cursor: default;
+    
+    -moz-box-shadow: 0 0 5px gray;
+    -webkit-box-shadow: 0 0 5px gray;
+    box-shadow: 0 0 5px gray;
+    
+    z-index: 1000000;
+}
+
+table.DomDatePicker td {
+    width: 23px;
+    height: 23px;
+    padding: 0px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.DatePickerRowMonthYear {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    color: white;
+}
+
+.DatePickerRowMonthYear > td:hover {
+    background-color: #666;
+    cursor: pointer;
+}
+
+.DatePickerRowReset td {
+    background-color: #c3d9ff;
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em !important;
+    height: 16px !important;
+}
+
+.DatePickerRowReset > td:hover {
+    background-color: #99bbdd;
+    cursor: pointer;
+}
+
+.DatePickerRowMonthYear td {
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.DatePickerRowWeekDays {
+    background-color: #333;
+}
+
+.DatePickerRowWeekDays td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.8em;
+    color: white;
+}
+
+.DomPrevMonth {
+    background-image: url(datepicker/arrow-left.png);
+}
+
+.DomNextMonth {
+    background-image: url(datepicker/arrow-right.png);
+}
+
+.DomPrevYear {
+    background-image: url(datepicker/arrow-prev.png);
+}
+
+.DomNextYear {
+    background-image: url(datepicker/arrow-fwd.png);
+}
+
+.DomDayCell {
+    color: black;
+    background-color: white;
+}
+
+.DomDayCell.today {
+    background-image: url(datepicker/today.gif);
+    background-position: 0% 50%;
+    
+}
+
+.DomDayCell.this {
+    background-color: #aaccee;
+}
+
+.DomDayCell:hover {
+    background-color: #f0e68c;
+}
+
+.DomDayCell.other {
+    color: #aaa;
+}
+
+.DomDateCellWeekend { background-color: #ddd !important; }
+
+.DomTimeRow {
+    background-color: #c3d9ff;
+}
+
+.DomTimeRow .DomSpinner {
+    width: 35px;
+}
+
+.DomTimeRow  td {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+}

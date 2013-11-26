@@ -1,0 +1,73 @@
+.DOMContextMenu                   { position: absolute; padding: 2px; border: 2px solid #666; background-image: url(legacy/win_bg.png); font-size: 11px; z-index: 60000; }
+.DOMContextMenu a                 { padding: 3px; display: block !important; color: black !important; text-decoration: none; cursor: default; }
+.DOMContextMenu a:hover           { background-image: url(legacy/inactive_tab.png); background-repeat: repeat-x; color: black !important; }
+
+
+.DOM2Popup {
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-width: 100px;
+    max-width: 300px;
+    z-index: 100000000;
+    cursor: default;
+
+    border: 1px outset #444;
+
+    font-size: 12px;
+    color: #888;
+
+    background-image: url(legacy/bg_menu.png);
+
+    padding: 2px;
+    min-height: 24px;
+    
+    -webkit-user-select: none;
+}
+
+.DOM2Popup div.iconoption {
+    padding-left:32px !important;
+}
+
+.DOM2Popup div.option {
+    display: block;
+    position: relative;
+    padding-right: 32px;
+    padding-left: 5px;
+    height: 20px;
+    padding-top: 4px;
+    font-size: 12px;
+    color: white;
+}
+
+.DOM2Popup .expandable {
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAJCAYAAAALpr0TAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oDARcXOLSFAaEAAABLSURBVBjTjc+hDoAwEATRIRAIv19PUlMBCsH/TdVJ2ttk3TMDUNVFJf43gUs9MlDgVrcMFGjqnoECJQMf9ZzBL4JGsKnrrPqN2hHsWfFRrsiZPdkAAAAASUVORK5CYII=');
+}
+
+.DOM2Popup div.option:hover,
+.DOM2Popup div.expanded {
+    color: white !important;
+    background-image: url(menu/menuoption_hover.png);
+}
+
+.DOM2Popup div.option img {
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    width: 20px;
+    height: auto;
+    max-height: 24px;
+}
+
+.SimpleTable td > input[type="text"],
+.SimpleTable td > input[type="password"],
+.SimpleTable td > textarea,
+.SimpleTable td > select {
+    width: 90%;
+}
+
+.SimpleTable td > textarea {
+    height: 100px;
+}

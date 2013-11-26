@@ -1,0 +1,2 @@
+.dm_color             { width: 14px; height: 14px; margin: 1px; float: left; border: 2px solid black; }
+.dm_color:hover       { border: 2px solid white; cursor: pointer; }

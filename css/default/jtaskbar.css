@@ -1,0 +1,116 @@
+div.jtaskbar {     
+    z-index: 50000; 
+    position: absolute; 
+    bottom: 0px; 
+    left: 0px; 
+    right: 0px; 
+          
+    background-repeat: repeat-x; 
+    background-image: url(jtaskbar/taskbar.png); 
+    height: 39px; 
+    background-color: #02070d; 
+    padding-top: 1px;
+    
+    overflow: hidden;
+    -webkit-user-select: none;
+}
+
+div.jtaskbar table {
+    border: none;
+    height: 39px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+div.jtaskbar tr {
+    height: 39px;
+}
+
+div.jtaskbar_tab { 
+/*     width: 160px;  */
+    height: 25px; 
+    padding-top: 9px;
+/*     background-repeat: no-repeat;  */
+    background-position: 0px 0px;
+    font-size: 11px; 
+    overflow: hidden;
+    display: block;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.jtaskbar_tab span { 
+    margin-top: 1px; 
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block; 
+    color: inherit; 
+    font-weight: inherit;
+    font-size: 12px;
+    width: auto !important;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.jtab_inactive { 
+    background-image: url(button/btnface.png) !important; 
+    cursor: default !important; 
+    color: #aaa; 
+    background-repeat: repeat-x;
+}
+
+
+.jt_tabs_holder { 
+    width: 100%; 
+    overflow: hidden; 
+    height: 39px;
+    display: block;
+    overflow: hidden;
+}
+
+.jtab_active { 
+    background-image: url(button/btnpressed.png) !important; 
+    cursor: default !important; 
+    color: white; 
+    background-repeat: repeat-x;
+    border: 1px outset #888;
+}
+
+.jtaskbar_tab img.icon { 
+    width: 16px; 
+    height: 16px; 
+    float: left; 
+    margin-right: 3px; 
+    margin-left: 5px; 
+}
+
+.jtcell {
+    height: 39px !important;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    white-space: pre;
+    font-size: 1px;
+    vertical-align: top;
+}
+
+.JTAppTable td {
+    width: 1px;
+}
+
+div#jTaskbarNotifier {
+    width: auto !important;
+    z-index: 1 !important;
+    white-space: no-wrap;
+    display: inline-block;
+    clear: both;
+    position: relative;
+}
+
+div#jTaskbarNotifier > div {
+    float: none !important;
+    display: inline-block;
+    vertical-align: top;
+}

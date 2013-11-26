@@ -1,0 +1,18 @@
+img[_selected=yes] {
+    background-color: rgba( 255, 0, 0, .2) !important;
+    box-shadow: 4px 4px 4px #000 !important;
+}
+
+tr[_selected=yes] {
+    outline: none !important;
+    background-color: rgba( 255, 0, 0, .2) !important;
+}
+
+td[_selected=yes] {
+    border-color: red !important;
+    outline: none !important;
+}
+
+*[_selected=yes] {
+    outline: 2px solid red;
+}

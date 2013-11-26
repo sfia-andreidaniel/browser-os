@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<script>
+    (function() {
+        
+        var _onloads = [];
+        
+        window.addOnload = function( func ) {
+            _onloads.push(func);
+        }
+        
+        window.boot = function() {
+            for ( var i=0, len = _onloads.length; i<len; i++ )
+                _onloads[i]();
+        }
+        
+        addOnload( function() {
+            
+            setTimeout( function() {
+            
+            $('.mceNonEditable').removeClass('mceNonEditable');
+            
+            try {
+                $('div.article .rating').OneDB_Rating();
+            } catch (e) {
+                console.log("Could not initialize rating elements: ", e);
+            }
+
+            try {
+                $('div.article .poll').OneDB_Poll();
+            } catch (e) {
+                console.log("Could not initialize polls elements: ", e);
+            }
+            
+            }, 10 );
+        } );
+        
+    })();
+</script>
+
+<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+<script type="text/javascript" src="jscripts/embed.js"></script>
+<script type="text/javascript"><!--
+document.write('<base href="' + tinyMCEPopup.getWindowArg("base") + '">');
+// --></script>
+
+<!-- ONEDB interface -->
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/classes/OneDB/components/frontend/js/jquery.OneDB_Poll.js"></script>
+<script type="text/javascript" src="/classes/OneDB/components/frontend/js/jquery.OneDB_Rating.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/classes/OneDB/components/frontend/css/OneDB_Rating.css" />
+<link rel="stylesheet" type="text/css" href="/classes/OneDB/components/frontend/css/OneDB_Poll.css" />
+
+<title>{#preview.preview_desc}</title>
+</head>
+<body id="content" onload="boot()">
+<div class="article" data-article-id="fakeonedbid" data-rating-score="2.5;10">
+<script type="text/javascript">
+	document.write(tinyMCEPopup.editor.getContent());
+</script>
+</div>
+</body>
+</html>

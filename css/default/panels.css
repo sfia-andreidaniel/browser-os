@@ -1,0 +1,282 @@
+/* Vertical and Horizontal Panel */
+*:focus {
+	outline: none;
+}
+
+.DomPanelHolder {
+    display: block;
+}
+
+.DomPanelTable {
+    border-collapse: collapse;
+    width: auto;
+}
+
+.DomPanelTable td {
+    padding: 0px;
+    text-align: left;
+    vertical-align: top;
+    margin: 0px;
+    width: auto;
+    white-space: nowrap;
+    
+}
+
+.DomPanel {
+    display: block;
+}
+
+
+
+/* Toolbar */
+.DomToolbar {
+	display: block;
+/* 	background-color: #ddd; */
+	cursor: default;
+    margin-right: 2px;
+}
+
+
+.DomToolbarNoTitle {
+    display: none;
+}
+
+.DomToolbar td {
+	vertical-align: middle;
+}
+
+.DomToolbarButton {
+	width: auto;
+	float: left;
+	text-align: center;
+	font-size: 12px;
+	font-family: Arial;
+	padding: 5px;
+	border: 1px outset transparent;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	position: relative;
+	background-image: url(button/btnface.png);
+	background-repeat: repeat-x;
+    
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color: white;
+}
+
+.DomToolbarButton.multiButton {
+    padding-right: 20px !important;
+}
+
+.DomToolbarButton.disabled * {
+	-moz-opacity: 0.3;
+	-webkit-opacity: 0.3;
+}
+
+.DomToolbarButton.disabled,
+.DomToolbarButton.disabled:hover,
+.DomToolbarButton.disabled:active {
+	background-color: #666 !important;
+}
+
+.DomToolbarButton:active,
+.DomToolbarButton.pressed,
+.DomToolbarButton.active,
+.DomToolbarButton.expanded {
+	border: 1px inset #666 !important;
+/* 	background-color: #ccc !important; */
+    background-image: url(button/btnpressed.png);
+    background-repeat: repeat-x;
+}
+
+.DomToolbarButton:hover {
+	border: 1px outset #ddd;
+}
+
+
+.DomToolbarButton>* {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.DomToolbarButton>img {
+}
+
+
+.textVisible div.DomToolbarButton>span {
+	display: block !important;
+}
+
+.DomToolbarButton span {
+	white-space: nowrap;
+	margin-top: 5px;
+	display: none;
+}
+
+.DomToolbarMultiButtonMenu .DomToolbarButton>img {
+    width: 16px !important;
+    height: auto !important;
+    margin: 5px !important;
+}
+
+
+.DomToolbar.icons-normal .DomToolbarButton>img {
+	height:16px;
+	width: auto;
+}
+
+.DomToolbar.icons-large .DomToolbarButton>img {
+	height:32px;
+	width: auto;
+}
+
+.DomToolbar.icons-none .DomToolbarButton>img {
+	display: none;
+}
+
+/* AppToolbarZone */
+.DomAppToolbarZone {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.DomAppToolbarZone:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+html[xmlns] .DomAppToolbarZone {
+    display: block;
+    overflow: hidden;
+}
+ 
+* html .DomAppToolbarZone {
+    height: 1%;
+}
+
+.DomAppToolbarZone div.DomToolbar { 
+    display: inline-block;
+    background-repeat: repeat-y;
+    background-image: url('panels/toolbar-handle.gif');
+    padding-left: 4px;
+    position: relative;
+    
+    zoom: 1;
+}
+
+.DomToolbarTitle {
+    display: block;
+    position: absolute;
+    left: 4px; 
+    right: 0px;
+    top: 1px;
+    padding: 2px;
+    height: 14px;
+    border: 1px inset #666;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+    background-image: url(button/btnpressed.png);
+    background-repeat: repeat-x;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    
+    overflow: hidden;
+    
+    color: #ddd;
+    
+}
+
+.DomToolbarCaptionVisible {
+    padding-top: 18px !important;
+}
+
+.DomToolbarMultiButton {
+    padding-right: 23px;
+}
+
+.DomToolbarButtonExpandBtn {
+    position: absolute;
+    display: block;
+    width: 15px;
+    right: 1px;
+    bottom: 1px;
+    top: 1px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding: 1px;
+    background-image: url('panels/arrow_down.gif');
+}
+
+.DomToolbarButtonExpandBtn:hover {
+    border: 1px outset white;
+    padding: 0px !important;
+}
+
+.DomToolbarButtonExpandBtn:active,
+.DomToolbarMultiButton.expanded .DomToolbarButtonExpandBtn {
+    border: 1px inset white;
+    background-color: #666;
+    padding: 0px !important;
+    color: white;
+}
+
+.DomToolbarMultiButtonMenu {
+    background-color: #444;
+    border: 1px outset #888 !important;
+    position: absolute;
+    padding-right: 2px !important;
+    
+    -moz-box-shadow: 0 0 5px gray;
+    -webkit-box-shadow: 0 0 5px gray;
+    box-shadow: 0 0 5px gray;
+    
+    z-index: 10000000;
+    
+    cursor: default;
+    border-radius: 3px;
+}
+
+.DomToolbarMultiButtonMenu td {
+    width: auto;
+    white-space: nowrap;
+}
+
+.DomToolbarMultiButtonMenu td>div * { 
+    display: inline !important;
+}
+
+.DomToolbarMultiButtonMenu img {
+    margin: 5px !important;
+    vertical-align: middle !important;
+}
+
+.DomToolbarMultiButtonMenu span {
+    vertical-align: middle !important;;
+}
+
+.DomToolbarMultiButtonMenu nobr {
+    vertical-align: middle !important;
+}
+
+.DomToolbarMultiButtonMenu td>div {
+    white-space: nowrap !important;
+    display: block !important; 
+    width: 100% !important; 
+    padding-left: 0px !important; 
+    padding-right: 0px !important; 
+    text-align: left !important;
+}
+
+.DomToolbarMultiButtonMenu .DomToolbarButton {
+    background-image: none !important;
+}
+

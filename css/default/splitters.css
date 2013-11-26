@@ -1,0 +1,98 @@
+.DomSplitter {
+    border: 2px inset #ddd;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+/*     background-color: #ddd; */
+}
+
+.DomSplitterSurface {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    /* outline: 2px inset #ddd; */
+    /* border: 2px inset #ddd; */
+    overflow: hidden;
+}
+
+.DomSplitterInner {
+    position: relative;
+	display: block;
+    overflow: hidden;
+}
+
+.DomSplitterInner>div.SplitH,
+.DomSplitterInner>div.SplitV {
+    background-color: #666 !important;
+}
+
+.DomSplitterInner>div.SplitV {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	z-index: 1;
+	display: block;
+	overflow: hidden;
+}
+
+.DomSplitterInner>div.SplitH {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	display: block;
+	overflow: hidden;
+}
+
+/* div.SplitH, div.SplitV {
+	overflow: auto;
+} */
+
+.DomSplitterInner>div.VSplitHandle {
+	position: absolute;
+	top: -1px;
+	bottom: -1px;
+	width: 6px;
+	border-left: 1px outset #888;
+	border-right: 1px outset #888;
+	background-color: #494949;
+	z-index: 2;
+	cursor: col-resize;
+	/* outline: 1px outset #ddd; */
+	/* display: none; */
+	margin-left: -2px;
+}
+
+.DomSplitterInner:hover>div.VSplitHandle{
+	display: block;
+}
+
+.DomSplitterInner>div.HSplitHandle {
+	position: absolute;
+	left: -1px;
+	right: -1px;
+	height: 6px;
+	border-top: 1px outset #888;
+	border-bottom: 1px outset #888;
+	background-color: #494949;
+	z-index: 2;
+	cursor: row-resize;
+	/* outline: 1px outset #ddd; */
+	/* display: none; */
+	margin-top: -2px;
+}
+
+div.SplitV>div.DomSplitter,
+div.SplitH>div.DomSplitter {
+	position: relative !important;
+	display: block;
+	left:0px;
+	top:0px;
+	width: 100%;
+	height: 100%;
+	/* background-color: red; */
+}
+
+.DomSplitterInner:hover>div.HSplitHandle{
+	display: block;
+}

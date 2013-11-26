@@ -1,0 +1,175 @@
+.DomTabPanel {
+    display: block;
+/*    width: 400px;
+    height: 200px;*/
+    border: none !important;
+    padding: 0px !important;
+    overflow: hidden;
+    
+/*     background-color: red; */
+}
+
+.DomTabPanelInner {
+    display: block;
+    position: relative;
+/*     background-color: #ddd; */
+}
+
+.DomTabPanelToolbar {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 25px;
+    display: block;
+    padding-left: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.DomTabPanelTab.closeable {
+    padding-right: 12px !important;
+}
+
+.DomTabPanelTab {
+    height: 25px;
+    display: inline-block;
+    
+    zoom: 1;
+    
+    position: relative;
+/*     background-color: black; */
+    padding-left: 0px;
+    padding-right: 0px;
+    background-image: url('tabs/tabs.png?v=0.1');
+    background-position: 0px -50px;
+    background-repeat: repeat-x;
+    margin-right: 13px;
+    z-index: 0;
+    
+    cursor: default;
+    
+    color: white;
+    
+    white-space: nowrap;
+}
+
+.DomTabPanelTab:focus {
+    color: #C57E3C !important;
+}
+
+.DomTabPanelTab > span {
+    white-space: nowrap;
+    display: inline-block;
+    padding-top: 5px;
+    zoom: 1;
+}
+
+.DomTabLeft, .DomTabRight {
+    width: 8px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-image: url('tabs/tabs.png?v=0.1');
+    position: absolute;
+    top: 0px;
+}
+
+.DomTabLeft {
+    background-position: 0px 0px;
+    left: -8px;
+}
+
+.DomTabRight {
+    background-position: -27px 0px;
+    right: -8px;
+}
+
+.DomTabPanelTab.TabActive {
+    background-position: 0px -75px !important;
+    z-index: 1 !important;
+    color: black;
+}
+
+.TabActive div.DomTabLeft {
+    background-position: 3px -25px !important;
+}
+
+.TabActive div.DomTabRight {
+    background-position: -31px -25px !important;
+}
+
+.DomTabPanelSheet {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 23px;
+    bottom: 0px;
+    
+    z-index: -1;
+    
+    border: 2px groove #888;
+    background-color: #888;
+    
+    z-index: 0;
+}
+
+.DomTabPanelSheet.active {
+    z-index: 1 !important;
+}
+
+.DomTabPanelSheetInner {
+    display: block;
+    position: relative;
+    margin: 0px !important;
+    padding: 0px !important;
+    border: none !important;
+    
+/*    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;*/
+}
+
+.DomTabPanel.ToolbarBottom .DomTabPanelToolbar {
+    left: 0px;
+    top: auto;
+    bottom: 0px;
+    height: 25px;
+}
+
+.DomTabPanel.ToolbarBottom .DomTabPanelTab {
+    background-image: url(tabs/tabs_bottom.png?v=0.1);
+}
+
+.DomTabPanel.ToolbarBottom .DomTabLeft,
+.DomTabPanel.ToolbarBottom .DomTabRight {
+    background-image: url(tabs/tabs_bottom.png?v=0.1);
+}
+
+.DomTabPanel.ToolbarBottom .DomTabPanelSheet {
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 23px !important;
+
+}
+
+.DomTabPanelTab .TabCloseButton {
+    display: none;
+}
+
+.DomTabPanelTab.closeable .TabCloseButton {
+    width: 16px;
+    height: 16px;
+    display: block !important;
+    position: absolute;
+    right: -5px;
+    top: 5px;
+    background-image: url(tabs/tabs_close.png);
+    background-repeat: no-repeat;
+    background-position: 0px -16px;
+    z-index: 100;
+}
+
+.DomTabPanelTab.closeable .TabCloseButton:hover {
+    background-position: 0px 0px;
+}

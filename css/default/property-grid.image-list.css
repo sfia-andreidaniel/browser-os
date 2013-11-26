@@ -1,0 +1,21 @@
+.DOMPropertyGrid__ImageList > div {
+    overflow-y: hidden !important;
+    overflow-x: auto !important;
+    width: 100%;
+    height: 100%;
+    display: block;
+    white-space: nowrap;
+}
+
+.DOMPropertyGrid__ImageList > div > img {
+    width: 48px;
+    height: auto;
+    max-height: 48px;
+    display: inline-block;
+    border: none;
+    margin: 4px;
+}
+
+.DOMPropertyGrid__ImageList > div > img.selected {
+    outline: 4px solid #333;
+}

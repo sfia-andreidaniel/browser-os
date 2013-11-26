@@ -1,0 +1,10 @@
+.ACE_EDITOR, .ACE_EDITOR * {
+    font-family: 'courier' !important;
+    font-weight: bold;
+}
+
+.ACE_EDITOR {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}

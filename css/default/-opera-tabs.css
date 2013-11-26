@@ -1,0 +1,7 @@
+.DomTabRight {
+    right: -38px !important;
+}
+
+.DomTabPanelTab.closeable .TabCloseButton {
+    right: -24px !important;
+}

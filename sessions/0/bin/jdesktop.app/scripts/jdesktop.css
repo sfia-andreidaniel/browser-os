@@ -1,0 +1,17 @@
+.desktop_icon            { -webkit-user-select: none; }
+.desktop_icon            { width: 96px; height: auto; overflow: hidden; color: white; font-size: 11px; font-weight: bold; position: absolute; text-align: center; cursor: default; background-repeat: no-repeat; background-position: 0px 0px; z-index: 0; outline: none !important;}
+.desktop_icon span       { background-color: #444; padding: 2px; -moz-border-radius: 6px; -webkit-border-radius: 6px; display: block; width: auto; }
+.desktop_icon:hover span { background-color: #666 !important; }
+.desktop_icon img        { width: 64px; height: 64px; padding-bottom: 10px; padding-top: 4px; }
+.desktop_icon:hover      { z-index: 1; height: auto; }
+
+.desktop_icon.CONTEXT_MENU span { background-color: blue !important; }
+
+.desktop                 { position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; }
+.desktop_icon input {
+    width: 94px;
+    height: auto;
+    background-color: white;
+    border: 1px solid black;
+    float: left;
+}

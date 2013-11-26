@@ -1,0 +1,18 @@
+#!/usr/bin/php
+<?php
+
+    // This tool is used to generate a command line for invoking the
+    // closure compiler on the JSPlatform core javascript code
+
+    $files = scandir( dirname(__FILE__) );
+    
+    echo "java -jar ". escapeshellarg( realpath( dirname(__FILE__) . "/../contrib/closure-compiler/compiler.jar" ) );
+    
+    foreach ($files as $file)
+        if ( preg_match('/\.js$/', $file) && !preg_match( '/^\-/', $file ) ) {
+            echo " --js " . escapeshellarg( realpath( dirname(__FILE__) . "/" . $file ) );
+        }
+        
+    echo  " --warning_level DEFAULT\n";
+
+?>

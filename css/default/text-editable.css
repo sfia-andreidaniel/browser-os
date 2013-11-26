@@ -1,0 +1,9 @@
+input[type=text].non-editable,
+textarea.non-editable {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    -webkit-user-select: none;
+    cursor: default;
+}

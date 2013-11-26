@@ -1,0 +1,200 @@
+.DomPopup,
+.DomPopup * {
+    font-family: 'Arial';
+}
+
+.DomPopup input[type=checkbox] {
+    border-color: white !important;
+    border-width: 2px;
+    border-radius: 0;
+    border-style: solid;
+    background-color: transparent !important;
+}
+
+.DomPopup input[type=radio] {
+    border-width: 2px;
+    border-radius: 6px;
+    border-style: solid;
+    background-color: transparent !important;
+}
+
+.DomPopup input[ivalue=true] {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhYUGT+oXiUAAACiSURBVBjTfY4tDoQwEIVfGw5QQUUdskkNroJL0OtxGDyesQTdsVWYriDlZ5flJZPMvPnmZcQ8zzDG4E3WWghmRl3XfyFmzgBQbdsGAAgh/EDDMOTSy7ZtH5OuUEpJVESUmRkAxBPknNv9GGMu1ff9bdZaQ2uNZVkgU0qvSUqp/Ufv/Rn/BXVdd3hymqbb8ppERAcoxnFE0zTw3h9mOS5a1xUfAmNR+4UugusAAAAASUVORK5CYII=) !important;
+}
+
+.DomPopup input[type=radio]:checked {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhcSOspX4uYAAABwSURBVBjTtY0xCgQhDEWfw5zARqazMffJhT2FdfQcKXSaLYaFkW32QQj8/0hCa43rutjRe+dMKRFj3IpzTg53B0BVAdZzVBURwd3BzFhrsV4opWBmHPzIH0VVDd/lMzsBRITPDm8XQ62VnPP27RiDG+j6Pa0aJZiYAAAAAElFTkSuQmCC);
+}
+
+.DomPopup input { vertical-align: middle; }
+
+.DomPopup {
+    border: 1px solid #8d8d89;
+    border-collapse: collapse;
+    position: absolute !important;
+    display: block;
+    background-color: #444;
+    padding: 2px;
+    z-index: 1000000;
+    -moz-box-shadow: 0 0 5px gray;
+    -webkit-box-shadow: 0 0 5px gray;
+    box-shadow: 0 0 5px gray;
+}
+
+.DomPopup,
+.DomMenuBar {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.DomPopupSeparator td {
+    height: 5px !important;
+    background-image: url('menu/separator.gif');
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+    
+    white-space: nowrap;
+}
+
+.DomPopup tr {
+    color: black;
+}
+
+.DomPopup *.disabled,
+.DomMenuBar *.disabled,
+.DomPopup *.disabled:hover,
+.DomMenuBar *.disabled:hover,
+tr.DomPopupSeparator td,
+tr.DomPopupSeparator td *,
+tr.DomPopupSeparator
+{
+    background-color: transparent !important;
+    color: #333 !important;
+    text-shadow: 1px 1px 1px black;
+    white-space: nowrap;
+}
+
+.DomPopup tr:hover,
+.DomPopup tr.activeOption {
+    color: white;
+    background-image: url('menu/menuoption_hover.png');
+}
+
+.DomPopup tr.disabled:hover,
+.DomPopup tr.disabled.activeOption {
+/*     background-color: blue; */
+    color: #444 !important;
+    background-image: none !important;
+}
+
+
+.DomPopup td {
+    padding: 0px;
+    border: none;
+    font-size: 11px;
+    color: white;
+    height: 20px;
+    cursor: default;
+    padding-left: 2px;
+    padding-right: 2px;
+    position: relative;
+    
+    white-space: nowrap;
+}
+
+.DomPopupIconHolder {
+    width: 20px !important;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    content: ' ';
+}
+
+td.DomPopupIconHolder {
+    height: 20px;
+    width: 20px !important;
+    content: ' ';
+}
+
+div.DomPopupCaptionHolder {
+    height: 18px;
+    padding-top: 2px;
+}
+
+.DomPopupInputHolder {
+    width: 20px !important;
+}
+
+.DomPopupInputHolder > input {
+    display: inline !important;
+    width: auto !important;
+}
+
+.DomPopupCaptionHolder {
+    width: auto;
+}
+
+.DomPopupShortcutHolder {
+    padding-left: 10px !important;
+    text-align: right;
+}
+
+.DomPopupExpandHolder {
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    content: ' ';
+}
+
+tr.disabled .DomPopupExpandHolder.expandable {
+    background-image: url('menu/arrow_right_disabled.gif') !important;
+}
+
+.DomPopupExpandHolder.expandable {
+    background-image: url('menu/arrow_right.gif');
+}
+
+.DomMenuBar {
+    display: block;
+    height: 24px;
+    overflow: hidden;
+    background-repeat: repeat-x;
+}
+
+.DomMenuBarTable {
+    width: auto;
+    border: none;
+    border-collapse: separate;
+}
+
+.DomMenuBarTable td { 
+    white-space: nowrap; 
+    font-size: 12px;
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: default;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.DomMenuBarTable td div {
+    float: left;
+}
+
+.DomMenuBar td {
+    border: 1px solid transparent;
+    color: white;
+}
+
+.DomMenuBar td:hover,
+.DomMenuBar td.activeOption {
+    background-repeat: repeat-x;
+    border: 1px outset #333 !important;
+    border-width: 1px 1px 0px 1px !important;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}

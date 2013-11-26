@@ -1,0 +1,50 @@
+button {
+  margin: 0;
+  padding: 0px 5px;
+  text-decoration: none;
+  font-size: small;
+  cursor: default;
+  background: url("button/btnface.png"); 
+  background-repeat: repeat-x;
+  border: 1px outset #ccc;
+  border-radius: 0px;
+  color: white;
+  height: 21px;
+  -webkit-user-select: none;
+}
+
+button:active {
+  border: 1px inset #666;
+  border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  outline: 2px outset #444 !important;
+}
+
+button:hover {
+  border-color: #9cf #69e #69e #7af;
+}
+
+button[disabled] {
+    border: 1px outset #666;
+    text-shadow: 1px 0px 1px black;
+    color: #888;
+}
+
+button.pressed:hover {
+  border-color: #666;
+}
+
+button.pressed {
+    background-image: url("button/btnpressed.png");
+    border: 1px inset #666;
+}
+
+button[disabled].pressed:hover {
+    border: 1px inset #666;
+}
+
+button:focus {
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    outline: 2px outset #444 !important;
+}

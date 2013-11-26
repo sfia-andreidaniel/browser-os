@@ -1,0 +1,341 @@
+.DOM2Window {
+    
+    /* opacity: 0.5; */
+    /* -webkit-transition: opacity 0.5s linear; */
+    
+    border: 1px outset #666;
+
+    position: absolute; 
+/*     overflow: hidden; */
+    z-index: 100;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    
+    
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;    
+    
+    background-color: #444;
+    
+}
+
+.DOMWindow_AppState_waiting,
+.DOMWindow_AppState_waiting * {
+    cursor: wait !important;
+}
+
+.DOM2Window.DOM2WindowFocused {
+    box-shadow: 0px 0px 5px white;
+}
+
+.DOM2WindowInner {
+    position: relative;
+    margin: 0px !important;
+    padding: 0px !important;
+    
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;    
+    
+}
+
+.DOM2WindowTitle { 
+    color: #999; 
+    
+    background-repeat: repeat-x;
+    height: 26px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: default;
+    background-image: url('dialog/titlebar_inactive.png');
+    background-position: 0px 0px;
+    
+    margin: 0px;
+    padding: 0px;
+    
+    position:absolute;
+    left: 0px;
+    right: 0px;
+    top:  0px;
+    
+    z-index: 999;
+    
+     -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;    
+}
+
+.DOM2DialogModalOverlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: block;
+    z-index: 0;
+    background-image: url(dialog/modal_frame.png);
+    z-index: 998;
+}
+
+.DOM2WindowTitleInner {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;    
+
+}
+
+.DOM2WindowModalIcon {
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    overflow: hidden;
+}
+
+.DOM2WindowCaption {
+    display: block;
+    position: absolute;
+    
+    font-size: 12px;
+    font-weight: bold;
+    color: inherit;
+    overflow: hidden;
+
+    left: 30px;
+    right: 60px;
+    top: 5px;
+}
+
+.DOM2WindowModalButtonsHolder {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    text-align: right;
+    overflow: hidden;
+    
+    height: 17px;
+    
+    border: 1px inset #888;
+    border-radius: 10px;
+    
+    text-align: center;
+    
+    background-repeat: repeat-x;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAATCAYAAABRC2cZAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKHQgYNOxX3EMAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAM0lEQVQI1y3LoQHAMAACsMBlM/3/ozJTGRHnfGs2lei90zRqU+hGgw4VSrT62EZnGnkNfpWVDfbsq41HAAAAAElFTkSuQmCC);
+    background-position: 50% 50%;
+}
+
+.DOM2WindowModalButtonsHolder > div {
+    margin: 1px 2px 0px 2px;
+    float: right;
+}
+
+.DOM2WindowScrollable div.DOM2WindowBody {
+    overflow: auto !important;
+}
+
+.DOM2WindowBody { 
+    text-align: left; 
+    overflow: hidden !important; 
+    font-size: 11px; 
+    margin: 0px;
+    padding: 0px;
+/*     background-image: url(dialog/win_bg.png); */
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    
+    background-color: #666; 
+    
+/*     outline: 1px inset #bbb; */
+
+    z-index: 0;
+}
+
+.DOM2WindowAlwaysOnTop {
+    z-index: 2000 !important;
+}
+
+.DOM2WindowFocused {
+    z-index: 1000 !important;
+/*    -moz-box-shadow: 0 0 5px gray;
+    -webkit-box-shadow: 0 0 5px gray;*/
+}
+
+.DOM2WindowFocused .DOM2WindowTitle {
+    background-image: url(dialog/titlebar.png) !important;
+    background-position: 0px 100% !important;
+    color: white;
+}
+
+.DOM2WindowClose { 
+    width: 15px; 
+    height: 15px; 
+    background-position: 0px 0px; 
+    cursor: default; 
+    background-image: url('dialog/btn_close.png');
+    display: inline-block;
+}
+
+.DOM2WindowFocused .DOM2WindowClose {
+  background-position: 0px -30px;
+}
+
+.DOM2WindowClose:hover { 
+    background-position: 0px -15px; 
+}
+
+.DOM2WindowFocused .DOM2WindowClose:hover {
+  background-position: 0px -45px;
+}
+
+.DOM2WindowMaximize { 
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-position: 0px 0px; 
+    cursor: default; 
+    background-image: url('dialog/btn_maximize.png');
+}
+
+.DOM2WindowMaximize:hover { 
+    background-position: 0px -15px; 
+}
+
+.DOM2WindowMinimize { 
+    display: inline-block;
+    width: 15px; 
+    height: 15px; 
+    background-position: 0px 0px; 
+    cursor: default; 
+    background-image: url('dialog/btn_minimize.png'); 
+}
+
+.DOM2WindowMinimize:hover { 
+    background-position: 0px -15px; 
+}
+
+.DOM2WindowResize { 
+    width: 10px; 
+    height: 10px; 
+    
+    background-image: url(dialog/resize.gif); 
+    background-repeat: no-repeat; 
+    
+    position: absolute; 
+    cursor: se-resize; 
+    z-index: 300;
+}
+
+.DOM2InvisibleWindow {
+    display: none !important;
+}
+
+.DOM2MinimizedWindow {
+    display: none !important;
+}
+
+.DOM2MinimizeHolder {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 100;
+    height: 25px;
+}
+
+.DOM2MinimizeHandle {
+    width: 150px; height: 18px;
+    display: table-cell;
+    font-size: 12px;
+    padding-top: 5px;
+    background-image: url(dialog/inactive_tab.png);
+    padding-left: 5px;
+    border-left: 1px solid black;
+    cursor: default;
+    font-weight: bold;
+    white-space: nowrap;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background-repeat: repeat-x;
+}
+
+
+
+/*  Menu Toolbar  */
+
+.DomDialogMenuBar {
+    display: block;
+    border-bottom: 1px solid #888;
+    padding-bottom: 2px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 26px !important;
+    z-index: 3;
+    background-image: url(menu/menu_bg.png);
+    background-position: 0% 100%;
+}
+
+.DomDialogToolbar {
+    display: block;
+    border-bottom: 1px solid #888;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 7px;
+    z-index: 2;
+    overflow: hidden;
+    background-image: url(menu/menu_bg.png);
+    background-position: 0% 100%;
+
+}
+
+.DomDialogMenuBar > div.DomMenuBar {
+    margin-top: 2px;
+}
+
+.DomDialogStatusBar {
+    display: block;
+    border-top: 1px solid #888;
+    padding: 1px;
+    
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    background-color: #ddd !important;
+    z-index: 1;
+    height: 20px;
+    
+    overflow: hidden;
+}
+
+.DOM2Window .DOMModalDialog .DOM2WindowBody {
+    background-color: #444;
+}

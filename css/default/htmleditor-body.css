@@ -1,0 +1,104 @@
+* {
+    font-family: Arial;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-style: inherit;
+}
+
+p {
+    font-size: small;
+    line-height: 1em;
+    margin: 4px 0px;
+}
+
+b, strong {
+    font-weight: bold;
+    font-family: inherit;
+    color: inherit important;
+    background-color: inherit important;
+}
+
+i {
+    font-style: italic;
+    font-family: inherit;
+    color: inherit !important;
+    background-color: inherit !important;
+}
+
+u {
+    text-decoration: underline;
+    font-family: inherit;
+    color: inherit !important;
+    background-color: inherit !important;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+pre, code {
+    white-space: pre;
+    font-family: courier;
+}
+
+div, dl, dt, dd {
+    font-size: 12px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1em;
+    margin: 0.5em 0em 0.5em 0em;
+}
+
+table[data-editing] {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+}
+
+table[data-editing] td {
+    border: 1px solid black;
+}
+
+span {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+}
+
+img, video {
+    display: inline-block;
+}

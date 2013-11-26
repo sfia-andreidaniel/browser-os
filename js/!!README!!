@@ -1,0 +1,5 @@
+- Files starting with "-" will be placed at top
+  when optimizing with closure compiler
+- Files starting with "!" will not be optimized
+  with closure compiler, but will just be appended
+  to main built file

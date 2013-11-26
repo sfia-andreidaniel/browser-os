@@ -1,0 +1,4 @@
+JSIde - v0.1
+
+Authors:
+Andrei Sfia <sfia.andreidaniel@gmail.com> - Lead Developer

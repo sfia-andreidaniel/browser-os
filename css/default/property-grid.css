@@ -1,0 +1,349 @@
+.DOMPropertyGrid {
+    display: block;
+    background-color: #666;
+    border: 1px solid #666;
+    overflow: hidden;
+}
+
+.DOMPropertyGrid input[type=text]::-webkit-input-placeholder,
+.DOMPropertyGrid input[type=password]::-webkit-input-placeholder,
+.DOMPropertyGrid textarea::-webkit-input-placeholder {
+    color: #555;
+}
+
+.DOMPropertyGrid input.DomSpinnerCtl,
+.DOMPropertyGrid div.DomSpinnerInner {
+    background-color: transparent !important;
+}
+
+.DOMPropertyGridInner {
+    display: block;
+    position: relative;
+    background-color: #666;
+}
+
+.DOMPropertyGridToolbarHolder {
+    display: block;
+    position: absolute;
+    background-color: #555;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 31px;
+    overflow: hidden;
+}
+
+.DOMPropertyGrid.no-toolbar .DOMPropertyGridToolbarHolder {
+    display: none;
+}
+
+
+.DOMPropertyGridBody {
+    background-color: #666;
+    position: absolute;
+    display: block;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    top: 32px;
+    border: 1px inset #888;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.DOMPropertyGrid.no-toolbar .DOMPropertyGridBody {
+    top: 1px;
+}
+.DOMPropertyGridResizeHandle {
+    width: 4px;
+    position: absolute;
+    top: 33px;
+    bottom: 1px;
+    left: 50%;
+    /* border-right: 1px dashed #666; */
+    /* background-color: #aaa; */
+    cursor: col-resize;
+    z-index: 1000;
+}
+
+.DOMPropertyGridRow {
+    height: 20px;
+    position: relative;
+    display: block;
+    border-bottom: 1px solid #666;
+    background-color: #666;
+    cursor: default;
+}
+
+.DOMPropertyGridRow.single {
+    z-index: 1001;
+}
+
+.DOMPropertyGridRow.multi > div.GridRowLabel {
+    display: block;
+    position: absolute;
+    left: 20px;
+    right: 50%;
+    bottom: 0px;
+    top: 0px;
+    overflow: hidden;
+    font-weight: normal;
+    background-color: #666;
+    color: white;
+    text-shadow: 1px 1px 1px #444;
+}
+
+.DOMPropertyGridRow.multi.focused > div.GridRowLabel,
+.DOMPropertyGridRow.multi.focused,
+.DOMPropertyGridRow.multi:focus > div.GridRowLabel,
+.DOMPropertyGridRow.multi:focus
+ {
+    background-color: #333;
+    color: white;
+}
+
+.DOMPropertyGridRow > div.GridRowLabel {
+    white-space: nowrap;
+}
+
+.DOMPropertyGridRow.single > div.GridRowLabel {
+    display: block;
+    position: absolute;
+    left: 20px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    overflow: hidden;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+}
+
+.DOMPropertyGridRow.multi > div.GridRowValue,
+.DOMPropertyGridRow.multi > div.GridNullValue {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    background-color: #aaa;
+    color: black;
+    border-left: 1px dotted #333;
+    text-overflow: ellipsis;
+}
+
+.DOMPropertyGridRow.multi > div.GridNullValue {
+    background-color: #ddd;
+}
+
+.DOMPropertyGridRow.single > div.GridRowValue {
+    display: none;
+}
+
+.DOMPropertyGridRow.forceShow {
+    display: block !important;
+}
+
+.DOMPropertyGridExpand {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 20px;
+    background-color: #333;
+    display: block;
+    cursor: default;
+    
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url(property-grid/collapsed.png);
+    
+}
+
+.DOMPropertyGridExpand.expanded {
+    background-image: url(property-grid/expanded.png);
+}
+
+.DOMPropertyGridButton {
+    display: block;
+    float: left;
+    width: 28px;
+    height: 28px;
+    margin: 1px;
+    /* background-color: black; */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    outline: none;
+}
+
+.DOMPropertyGridButton:hover {
+    outline: 1px outset #ddd;
+}
+
+.DOMPropertyGridButton:active,
+.DOMPropertyGridButton.pressed {
+    outline: 1px inset #ddd;
+}
+
+.DOMPropertyGridButton.pressed {
+    background-color: #aaa;
+}
+
+.DOMPropertyGridButton.ViewGroupped {
+    background-image: url(property-grid/btn-grid-view-categories.png);
+}
+
+.DOMPropertyGridButton.ViewSorted {
+    background-image: url(property-grid/btn-grid-view-alphabetically.png);
+}
+
+.DOMPropertyGridVerticalResize {
+    position: absolute;
+    height: 1px;
+    background-color: transparent;
+    border-bottom: 1px dashed #333;
+    display: block;
+    left: 0px;
+    right: 0px;
+    bottom: -1px;
+    z-index: 1000000;
+    cursor: row-resize;
+}
+
+.DOMPropertyGridVerticalResize:hover {
+    border-bottom: 4px solid #333;
+}
+
+/* INPUT OVERRIDES */
+.DOMPropertyGrid__inputSpinner {
+    position: absolute !important;
+    left: -2px !important;
+    top: -2px !important;
+    bottom: -2px !important;
+    right: -2px !important;
+    width: auto !important;
+    height: auto !important;
+    display: block !important;
+}
+
+.DOMPropertyGrid__inputDate {
+    display: block !important;
+    left: -4px !important;
+    right: -4px !important;
+    bottom: -4px !important;
+    top: -4px !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    background-color: transparent !important;
+}
+
+.DOMPropertyGrid__inputCheckBox {
+    border: 2px solid black !important;
+    width: 12px !important;
+    height: 12px !important;
+    background-color: transparent !important;
+    display: block;
+}
+
+.DOMPropertyGrid__inputTextBox {
+    position: absolute !important;
+    display: block !important;
+    border: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    top: 0px !important;
+    bottom: 0px !important;
+    background-color: transparent !important;
+    backgroundImage: none !important;
+}
+
+input[type=text].DOMPropertyGrid__inputTextBox.non-editable {
+    background-color: #666 !important;
+}
+
+.DOMPropertyGrid__inputTags {
+    position: absolute !important;
+    display: block !important;
+    border: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    top: 0px !important;
+    bottom: 0px !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.DOMPropertyGrid__inputSelect:not(data-icon) {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAKCAYAAABrGwT5AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhY1Mh+LsoYAAAAqSURBVCjPY2AYkoCRgYHhP5HqcAr+J1UjusR/UjRik/xPrEZc4P/gjyoAv+gFBLH4kp4AAAAASUVORK5CYII=);
+}
+
+.DOMPropertyGrid__inputSelect {
+    position: absolute !important;
+    display: block !important;
+    border: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    left: -1px !important;
+    right: 0px !important;
+    top: -1px !important;
+    bottom: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+    outline: none !important;
+    background-color: #999;
+    -webkit-appearance: none;
+    background-color: #aaa;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+}
+
+.DOMPropertyGrid__inputSelect option {
+    background-color: #bbb;
+}
+
+.DOMPropertyGrid__textArea {
+    position: absolute !important;
+    display: block !important;
+    border: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    top: 0px !important;
+    bottom: 0px !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    width: auto !important;
+    height: auto !important;
+    outline: none !important;
+}
+
+.DOMPropertyGrid__textArea:focus {
+    outline: 1px dotted black !important;
+}
+
+.DOMPropertyGrid__Generic {
+    background-color: #666 !important;
+    color: #ddd !important;
+    text-shadow: 1px 1px 1px black;
+}
+
+.GridRowValue input[type=file]::-webkit-file-upload-button {
+    height: 16px !important;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    width: 80px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.GridRowValue > .DOMTagsEditor > div {
+    background-color: transparent !important;
+}

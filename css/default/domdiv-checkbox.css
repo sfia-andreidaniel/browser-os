@@ -1,0 +1,22 @@
+.DOMDivCheckBox {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    border: 1px inset #666;
+    background-color: white;
+    vertical-align: middle;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+
+.DOMDivCheckBox.checked {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90BChIiLyNoYOIAAAA7SURBVBjTfY9JCgAwCAON///z9NBG0IIBD3FcBcSm3KAkcoM1wWZCC8e7p3kBX0dcqlphM2H7wslZfAD/gCX7yZe5JgAAAABJRU5ErkJggg==);
+}
+
+.DOMDivCheckBox.disabled,
+.DOMDivCheckBox.readOnly {
+    background-color: #ddd;
+}

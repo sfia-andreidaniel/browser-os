@@ -1,0 +1,14 @@
+div.DOMObjectEditor {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+div.DOMObjectEditor > div.inner {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}

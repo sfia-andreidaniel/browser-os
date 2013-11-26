@@ -1,0 +1,41 @@
+div#jTaskbarNotifier {
+    position: absolute !important;
+    right: 2px;
+    bottom: 5px;
+    height: 24px;
+    padding: 1px;
+    border: 1px inset #666;
+    color: white;
+    display: block;
+    z-index: 100000;
+    border-radius: 3px;
+}
+
+div#jTaskbarNotifier > div {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAewQAAHsEBw2lUUwAAAAd0SU1FB9sIHg0wLNHd5GIAAAMdSURBVDjLXZNLTJxVAEbP/Z/3f8wMM4wUbEutNbHEYEzUVmNFlyq0Nd3W+oorTUzqqpFo2LA1Ltxru3LhAiW2qSXRRAhWqQZBOii2yqMwzjDMMM//MXNdNBL1rL7N+XZH8C+KO2U1k5vmky8/ZfnXTRwSIKDZCjnce5BXTp3h2ePH6cl2iX+cvZFbXVHvTbxLLr/I2Sde4/nB5+hL9yGAfLnA1Nw0lya+4IDbz/j58wwefWDPZen2ijo2+qQ6c3FYzRanVVPV1f8JVF3d2LmuXvrwTfXQi6fVz7kVBaAXSmV14dIoZW+L14ffIGNmaYUBnU4HhSLshFTCCluNAo1Ok/0DCX7JL/L1lQW+vXJ1zJjNzfHZ/AQPn+inUNvG6khiJ0ahqLfrAASdgJ3WDvlmns2gRNiXZ/qbm1z77hR6cMga2zR/5462RibZTdbJErdjwk5II25QjauUWiUKzQLbwTY3tn5kauUqrinJLyn06EExFh2uUnEqrEV/ogkNXRgEUYvd6K5cbBRZb6zzQ/E6lzcmKasaXtKitmhhNKw6UaqFZWp0jICZ8hSr8TL7ZT8JIwVALa5yJ1hlrbZKpLewkzphFGDaIYaQEaZj4muStEzi2iaBWWFdLGFiANDWYgIzJum52IZFOaiiDB0lBIZraWhmgqYZ40ubhHTwpI20bAxdu3vQ7tCKQupGQFU0CbUWVquLMLIwBtKD3Nq9iXWfj6vb+K5DwrZxpcQ2TEARtts0AgNNCNpKEcsAfa2HexP9aOeOvcruvEHGTmM7Oq5p4zsOKdcl47lkfJ+U4+DbEseysaVGt5Wh9r3L2ZFhtKGBp3hMPk00u4900sdyFdIw8GxJyvNIez6+dJCWiSUF6S4X5g5yP0d5YegExr5st1hY/k29fOF9qpak53SIlwJpg+eYCCDQwLM0OpUkf1w2KV2z+Xj8bQ703SP2gljIrajRDz7iVrzMIyeTHHlckshoCAHVkuL2T03mJ3fpDY8w/s5bPDo4IP5TI0D+r5L6amaWi59PsrG7gekr0CCuCrJOD+dOjjDyzBB9vd173t8JY2MdKCJYmwAAAABJRU5ErkJggg==);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 0px 1px 0px 1px;
+    border: 1px outset #666;
+    border-radius: 2px;
+    padding: 2px;
+    
+    vertical-align: top;
+    
+    cursor: default;
+}
+
+div#jTaskbarNotifier > div:active {
+    border-style: inset !important;
+}
+
+div#jTaskbarNotifier > div.NotificationClock {
+    background-image: none;
+    width: auto !important;
+    color: white;
+    min-width: 40px;
+    text-align: center;
+}

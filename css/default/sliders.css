@@ -1,0 +1,89 @@
+/* Begin: Horizontal Slider */
+
+.DomHSlider,
+.DomVSlider {
+    -webkit-user-select: none;
+}
+
+.DomHSlider {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    
+    overflow: hidden;
+}
+
+.DomHSlider:focus {
+    outline: 1px dotted black;
+}
+
+.DomHSlider > div.inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+    background-image: url('sliders/hslider-bg.png');
+}
+
+.DomHSlider > div.inner > div.handle {
+    width: 9px;
+    background-repeat: no-repeat;
+    background-image: url('sliders/hslider-handle.png');
+    
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    
+    background-position: 50% 50%;
+}
+
+/* Begin: Vertical Slider */
+
+.DomVSlider {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 150px;
+    padding: 0px;
+    margin: 0px;
+    
+    overflow: hidden;
+}
+
+.DomVSlider:focus {
+    outline: 1px dotted black;
+}
+
+.DomVSlider > div.inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    background-repeat: repeat-y;
+    background-position: 50% 50%;
+    background-image: url('sliders/vslider-bg.png');
+}
+
+.DomVSlider > div.inner > div.handle {
+    height: 9px;
+    
+    background-repeat: no-repeat;
+    background-image: url('sliders/vslider-handle.png');
+    
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    
+    background-position: 50% 50%;
+}

@@ -1,0 +1,131 @@
+.DOMTextDropDown {
+    display: inline-block;
+    position: relative;
+    min-width: 25px;
+    min-height: 25px;
+    border: 1px outset #666;
+    background-color: white;
+    
+    height: 25px;
+    
+    overflow: hidden;
+}
+
+.DOMTextDropDown > div.relative {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+}
+
+.DOMTextDropDown > div.relative > input[type=text] {
+    z-index: 2;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    outline: none !important;
+    border-right: 1px groove #ddd !important;
+}
+
+.DOMTextDropDown > div.relative > input[type=text] {
+    font-family: arial !important;
+    font-size: 1em !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1em !important;
+    
+    text-align : auto !important;
+    text-indent: 0px;
+    text-shadow: none;
+    text-transform: none;
+
+    word-spacing: 0px;
+
+    padding: 0px !important;
+    margin: 0px !important;
+    outline: none !important;
+    border: none !important;
+    
+    overflow: hidden;
+    white-space: nowrap;
+
+    position: absolute !important;
+    display: block !important;
+
+    left: 3px !important;
+    top: 0px !important;
+    bottom: auto !important;
+    right: 0px !important;
+    height: 25px !important;
+    min-height: 25px !important;
+    
+    width: 100% !important;
+    height: 100% !important;
+    
+    vertical-align: top !important;
+    font-weight: normal !important;
+
+
+    vertical-align: top;
+}
+
+.DOMTextDropDown > div.relative > input[type=text].autoComplete {
+    color: #666;
+    z-index: 1 !important;
+    background-image: none !important;
+}
+
+.DOMTextDropDown > div.relative > div.expander {
+    position: absolute;
+    z-index: 4;
+    width: 16px;
+    min-height: 25px;
+    background-color: transparent;
+    cursor: default;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url( 'text-dropdown/TextDropDown_collapsed.png' );
+}
+
+.DOMTextDropDown.expanded > div.relative > div.expander {
+    background-image: url( 'text-dropdown/TextDropDown_expanded.png' );
+}
+
+.DOMTextDropDown_Overlay {
+    display: block;
+    outline: 1px outset #666;
+    background-color: white;
+    position: absolute;
+    
+    padding: 0px;
+    margin: 0px;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    max-height: 104px;
+    min-height: 5px;
+    
+    z-index: 2000000;
+    
+    min-width: 150px;
+}
+
+.DOMTextDropDown_Overlay > div {
+    width: 100%;
+    height: 12px;
+    padding: 2px;
+    cursor: default;
+}
+
+.DOMTextDropDown_Overlay > div.selected {
+    background-color: blue !important;
+    color: white !important;
+    font-weight: bold;
+}

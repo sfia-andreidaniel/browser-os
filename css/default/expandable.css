@@ -1,0 +1,38 @@
+div.expandableSection {
+    display: block;
+    padding: 2px;
+}
+
+div.expandableSection > .caption {
+    overflow: hidden;
+    display: block;
+    padding-left: 16px;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+}
+
+div.expandableSection > .body {
+    display: none;
+    position: relative;
+}
+
+div.expandableSection.expanded > .caption {
+    background-image: url('expandable/minus.png');
+}
+
+div.expandableSection.expanded > .body {
+    display: block;
+}
+
+div.expandableSection.collapsed > .caption {
+    background-image: url('expandable/plus.png');
+}
+
+div.expandableSection.expanded > .caption:hover {
+    background-image: url('expandable/minushover.png');
+}
+
+div.expandableSection.collapsed > .caption:hover {
+    background-image: url('expandable/plushover.png');
+}

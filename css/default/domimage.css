@@ -1,0 +1,41 @@
+div.DOMImage {
+    position: absolute;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 1px inset #ddd;
+    
+    -webkit-user-select: none;
+}
+
+div.DOMImage.normal {
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+div.DOMImage.stretch {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+}
+
+div.DOMImage.tiles {
+    background-repeat: repeat;
+    background-position: 0px 0px;
+}
+
+div.DOMImage.best {
+    background-image: none !important;
+    text-align: center;
+}
+
+div.DOMImage.best > img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0px auto 0px auto;
+    border: none;
+    padding: none;
+}

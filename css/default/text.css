@@ -1,0 +1,54 @@
+input[type=text],
+input[type=password],
+textarea {
+  padding: 2px;
+  border: 2px inset #ddd;
+  vertical-align: top;
+  resize: none;
+}
+
+input[type=text]:disabled,
+input[type=password]:disabled,
+textarea:disabled {
+    color: #888;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+    outline: 1px dotted black;
+}
+
+input[type=text].hintText,
+textarea.hintText {
+    font-style: italic;
+    color: #888 !important;
+}
+
+input[type=text].hasIcon,
+input[type=password].hasIcon,
+textarea.hasIcon {
+    padding-left: 17px !important;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+}
+
+/* Date Boxes */
+input[type=text].isDate {
+    background-image: url(text/date.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    width: 110px;
+}
+input[type=text].isTime {
+    background-image: url(text/time.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    width: 70px;
+}
+input[type=text].isDateTime {
+    background-image: url(text/datetime.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    width: 140px;
+}

@@ -1,0 +1,278 @@
+div.HTMLEditor {
+    background-color: #ddd;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+div.HTMLEditor .mce-resizehandle {
+    display: none;
+}
+
+div.HTMLEditor .mce-path {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div.HTMLEditor .mce-container-body.mce-flow-layout {
+    /* overflow: hidden;
+    max-height: 0px;
+    */
+    display: none;
+}
+
+div.HTMLEditor * {
+    border: none;
+    outline: none;
+}
+
+div.HTMLEditor iframe {
+    padding: 0px !important;
+    margin: none;
+    border: none !important;
+}
+
+/*
+div.HTMLEditor > .inner {
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+div.HTMLEditor > .inner > .body {
+    display: block;
+    position: relative;
+    padding: 1px !important;
+    margin: 4px !important;
+    background-color: white;
+    border: none !important;
+    overflow: scroll !important;
+    outline: 1px inset #ddd;
+    z-index: 0;
+    font-size: small;
+}
+
+div.HTMLEditor > .inner > .toolbar {
+    display: block;
+    position: relative;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    -webkit-user-select: none;
+    background-color: #ddd;
+    z-index: 100;
+    background-repeat: repeat;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAWCAYAAAAFMyaXAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90EDAgnAX7zb2IAAAAjSURBVBjTY2xpavnPAAWM////h3NY7t27xwjjMDEggZHDAQC/KAlNNbiSwgAAAABJRU5ErkJggg==')
+}
+
+div.HTMLEditor > .inner > .toolbar > div.group
+ {
+    height: 20px;
+    padding: 2px 0px 0px 2px;
+    margin: 0;
+    float: left;
+    display: block;
+    white-space: nowrap;
+    background-repeat: repeat-x;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90EDAgYLGPyGSsAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAEklEQVQI12NoaWr5z/D/////ABxKBoZWZEtCAAAAAElFTkSuQmCC')
+    background-color: #ddd;
+}
+
+div.HTMLEditor > .inner > .toolbar > div.group:hover {
+    background-color: rgba( 100, 100, 100, .2 );
+}
+
+div.HTMLEditor > .inner > .toolbar > div.group:before {
+    height: 22px;
+    width: 10px;
+    display: block;
+    content: ' ';
+    float: left;
+    margin-left: -4px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAWCAYAAADn7z3uAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90EDAgWIhrJGaIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAIklEQVQY02M4dvjY/5amlv//////f+zwsf9MDGhgVID6AgDbgg1MiAOwRgAAAABJRU5ErkJggg==);
+}
+
+div.HTMLEditor > .inner > .toolbar > div.break
+{
+    display: block;
+    clear: both;
+}
+
+
+div.HTMLEditor > .inner > .toolbar > div > div.button {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border: 1px outset transparent;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+div.HTMLEditor > .inner > .toolbar > div {
+    z-index: 100 !important;
+    position: relative;
+}
+
+div.HTMLEditor > .inner > .toolbar > div:hover {
+    z-index: 500 !important;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button > div.table-overlay {
+    display: none;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.table-overlay {
+    position: absolute;
+    left: 0px;
+    top: 18px;
+    padding: 4px;
+    background-color: white;
+    display: block;
+    z-index: 1000000;
+    border: 1px outset #ddd;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.table-overlay div.row {
+    display: block;
+    padding: 0;
+    margin: -1px 0px 0px 0px;
+    line-height: 10px;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.table-overlay div.col {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 2px solid black;
+    display: inline-block;
+    line-height: 10px;
+    padding: 0;
+    margin: 2px;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.table-overlay div.col.hover {
+    background-color: #bbb;
+    border-color: #ddd !important;
+    border-style: outset !important;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.table-overlay div.col.hover:active {
+    border-style: inset !important;
+    background-color: #ddd;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button > div.color {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    width: 14px;
+    border: 1px solid black;
+}
+
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.color > div.color-pane > b {
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.color > div.color-pane > b.default {
+    width: auto;
+    height: 10px;
+    display: block;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.color > div.color-pane > b:hover {
+    outline: 2px solid black;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover > div.color > div.color-pane {
+    display: block;
+    border: 1px outset #ddd;
+    width: 132px;
+    background-color: white;
+    z-index: 1000000;
+    position: absolute;
+    right: -4px;
+    top: 14px;
+    padding: 2px;
+    white-space: normal;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:hover {
+    border-color: white;
+    z-index: 1000000;
+}
+
+
+div.HTMLEditor > .inner > .toolbar > div > div.button:active {
+    border-style: inset;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.separator {
+    width: 4px;
+    height: 20px;
+    display: inline-block;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAWCAYAAADn7z3uAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90EDAgWIhrJGaIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAIklEQVQY02M4dvjY/5amlv//////f+zwsf9MDGhgVID6AgDbgg1MiAOwRgAAAABJRU5ErkJggg==);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder {
+    height: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder > div.dropdown {
+    height: 18px;
+    overflow: hidden;
+    min-width: 40px;
+    display: block;
+    background-color: white;
+    margin-right: 1px;
+    border: 1px inset transparent;
+    vertical-align: top;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder > div.dropdown.collapsed {
+    height: 20px !important;
+    overflow: hidden !important;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder:hover > div.dropdown {
+    height: auto;
+    max-height: 100px;
+    overflow-y: auto;
+    border-color: #bbb;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder:hover > div.dropdown > div.option:nth-child(1) {
+    display: none;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder:hover > div.dropdown > div.option:hover {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+div.HTMLEditor > .inner > .toolbar > div > div.placeholder > div.dropdown > div.option {
+    height: 16px;
+    line-height: 1em;
+    display: block;
+    white-space: nowrap;
+    padding: 2px 20px 2px 2px;
+    cursor: default;
+    -webkit-user-select: none;
+}
+
+*/

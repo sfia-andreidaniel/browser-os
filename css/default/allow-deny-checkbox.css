@@ -1,0 +1,21 @@
+div.AllowDenyCheckbox {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border: 2px inset #ddd;
+    
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+div.AllowDenyCheckbox:focus {
+    outline: 1px dotted black;
+}
+
+div.AllowDenyCheckbox.allow {
+    background-image: url("allow-deny-checkbox/allow.png");
+}
+
+div.AllowDenyCheckbox.deny {
+    background-image: url("allow-deny-checkbox/deny.png");
+}

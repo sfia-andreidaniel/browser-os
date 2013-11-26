@@ -1,0 +1,94 @@
+.CMSBrowserRender {
+    display: block;
+    position: relative;
+    border: none;
+    margin: -2px;
+    padding: 0px;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+.CMSBrowserRenderToolbar {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    border-bottom: 2px groove #ddd;
+    padding-bottom: 2px;
+} 
+
+.CMSBrowserRenderBody {
+    display: block;
+    background-color: white;
+    position: relative;
+    float: left;
+    padding: 5px;
+    width: 100%;
+    background-color: white;
+}
+
+.ItemIconRender {
+    float: left;
+    width: 228px;
+    height: 150px;
+    margin: 2px;
+    position: relative;
+}
+
+.ItemIconRender:hover {
+    outline: 3px solid #666;
+}
+
+.ItemIconRender > .thumbnail {
+    width: 96px;
+    height: 96px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    background-color: #ddd;
+    line-height: 96px;
+    
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.ItemIconRender > .name {
+    display: block;
+    overflow: hidden;
+    width: 130px;
+    height: 32px;
+    text-align: left;
+    font-weight: bold;
+    background-color: white;
+    
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.ItemIconRender > .price {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    font-weight: bold;
+    color: blue;
+}
+
+.ItemIconRender > .price:after {
+    content: ' $';
+    color: blue;
+}
+
+.ItemIconRender > .vendor {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    font-weight: bold;
+    color: orange;
+}

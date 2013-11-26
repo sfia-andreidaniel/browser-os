@@ -1,0 +1,475 @@
+function ErrorHighlighter(DOMObject) {
+    DOMObject.style.outline = '3px inset red';
+    DOMObject.style.backgroundColor = '#fbb';
+    setTimeout(function() {
+        DOMObject.style.outline = '';
+        DOMObject.style.backgroundColor = '';
+    }, 3000);
+}
+
+function TFormAbstractContainer(config, optionalContainer) {
+    var holder = optionalContainer || $('div');
+    holder.className = 'TFormContainer';
+    holder.legend = holder.appendChild($('div', 'TFormLegend'));
+    
+    holder.config = config;
+    
+    holder.getLabel = function() {
+        return holder.config.label || '';
+    };
+    
+    holder.setLabel = function(strHTML) {
+        (!strHTML ? removeStyle : addStyle)(holder.legend, 'TFormVisible');
+        holder.legend.innerHTML = strHTML;
+    };
+    
+    if (config.label)
+        holder.setLabel(config.label);
+    
+    return holder;
+}
+
+function TFormAbstractInput(config) {
+    var holder    = $('table', 'TFormTable');
+    var row       = holder.insertRow(0);
+    
+    holder.config = config;
+    
+    holder.labelHolder  = row.insertCell(0); holder.labelHolder.className = 'TFormLabel';
+    holder.inputHolder  = row.insertCell(1); holder.inputHolder.className = 'TFormInput';
+    holder.helpHolder   = row.insertCell(2); holder.helpHolder.className  = 'TFormHelp';
+    holder.helpHolder.icon = holder.helpHolder.appendChild($('div', 'TFormIconHelp'));
+    
+    holder.input = null;
+    
+    holder.getLabel = function() {
+        return holder.config.label || '';
+    };
+    
+    holder.setLabel = function(strHTML) {
+        holder.labelHolder.innerHTML = strHTML;
+    };
+    
+    holder.getHelp  = function() {
+        return holder.config.help;
+    }
+    
+    holder.setHelp  = function(strHTML) {
+        (!strHTML ? removeStyle : addStyle)(holder.helpHolder.icon, 'TFormVisible');
+        if (strHTML) setupTooltip(holder.helpHolder.icon, strHTML);
+    };
+    
+    holder.getInput = function() {
+        return holder.input;
+    };
+    
+    holder.setInput = function(DOMObject) {
+        holder.inputHolder.innerHTML = '';
+        holder.inputHolder.appendChild(DOMObject);
+        DOMObject.setAttribute('autocomplete', 'off');
+        holder.input = DOMObject;
+    };
+    
+    holder.getValue = function() {
+        return holder.getInput().value;
+    };
+    
+    holder.setValue = function(str) {
+        holder.getInput().value = str;
+    };
+    
+    holder.compile = function() {
+        if (holder.config.mandatory && holder.getValue() == '') {
+            holder.getInput().focus();
+            ErrorHighlighter(holder.getInput());
+            throw 'TFormAbstractInput.compile() : This field is mandatory!';
+        }
+        
+        if (holder.config.preg && holder.getValue() != '') {
+            try {
+                var pregExprStr = holder.config.preg.replace(/\\/g,'\\');
+                var pregExpr = eval( pregExprStr );
+            } catch(ex) {
+                throw "Invalid preg expression in form field name "+holder.__NAME__+": '"+pregExprStr+"'";
+            }
+            if (!pregExpr.test(holder.getInput().value)) {
+                holder.getInput().focus();
+                ErrorHighlighter(holder.getInput());
+                //console.log();
+                throw "Invalid field value format (does not match preg: '"+pregExprStr+"')!";
+            }
+        }
+        
+    };
+    
+    try {
+    if (config.help) holder.setHelp(config.help);
+    } catch(ex) { console.log('sethelp'); }
+    
+    try {
+    holder.setLabel(config.label || '&nbsp;');
+    } catch(ex) { console.log('setlabel'); }
+    
+    return holder;
+}
+
+//TFormText
+function TFormText(config) {
+    var holder = new TFormAbstractInput(config);
+    holder.setInput($('input').setAttr('type', 'text'));
+    
+    if (typeof config.value != 'undefined')
+        holder.setValue(config.value);
+    
+    return holder;
+};
+
+//TFormTextArea
+function TFormTextArea(config) {
+    var holder = new TFormAbstractInput(config);
+    holder.setInput($('textarea'));
+    
+    if (typeof config.value != 'undefined')
+        holder.setValue(config.value);
+    
+    return holder;
+}
+
+//TFormFile
+function TFormFile(config) {
+    var holder = new TFormAbstractInput(config);
+    holder.setInput($('input').setAttr('type', 'file'));
+    return holder;
+}
+
+function TFormHidden(config) {
+    var inp = $('input');
+    inp.type = 'hidden';
+    
+    inp.getInput = function() {
+        return inp;
+    };
+    
+    inp.setInput = function() {
+        //not supported
+    };
+    
+    inp.getValue = function() {
+        return inp.value;
+    };
+    
+    inp.setValue = function(str) {
+        inp.value = str;
+    };
+    
+    inp.getLabel = function() { return ''; };
+    inp.setLabel = function(str) { };
+    
+    inp.compile = function() {
+        return true;
+    };
+    
+    if (typeof config.value != 'undefined') {
+        inp.value = config.value;
+    }
+    
+    return inp;
+};
+
+//TFormArray
+
+function TFormArray(config) {
+    var holder = new TFormAbstractContainer(config);
+    
+    holder.items = [];
+    
+    holder.displayAddRemoveSigns = function() {
+        
+        if (holder.config.maxItems && holder.config.maxItems <= holder.items.length) 
+             holder.btnAdd.style.display = 'none';
+        else holder.btnAdd.style.display = '';
+        
+        for (var i=0; i<holder.items.length; i++) {
+            holder.items[i].btnDel.style.display = 
+                (holder.config.minItems && holder.config.minItems >= holder.items.length) ? 'none' : '';
+        }
+        
+    };
+    
+    holder.remove = function(item) {
+        
+        if (holder.config.minItems && holder.config.minItems >= holder.items.length) return;
+        
+        for (var i=0; i<holder.items.length; i++) {
+            if (holder.items[i] == item) {
+                
+                for (var j=i+1; j<holder.items.length; j++) {
+                    holder.items[j].setLabel('# '+j);
+                }
+                
+                holder.removeChild(holder.items[i]);
+                holder.items.splice(i, 1);
+                
+                holder.displayAddRemoveSigns();
+                
+                return;
+            }
+        }
+    };
+    
+    holder.btnAdd = holder.appendChild($('div', 'TFormArrayAdd'));
+    holder.btnAdd.onclick = function() { 
+        holder.add();
+    }
+    
+    holder.add = function() {
+    
+        if (holder.config.maxItems && holder.config.maxItems <= holder.items.length) return;
+    
+        var conf = {
+            "label": '# '+(holder.items.length + 1),
+            "items": holder.config.items,
+            "type": "object"
+        };
+        
+//         console.log(conf);
+        
+        var newForm = new TFormObject(conf);
+        
+        newForm.btnDel = newForm.appendChild($('div', 'TFormArrayRemove'));
+        newForm.btnDel.onclick = function() {
+            holder.remove(newForm);
+        };
+        
+        holder.appendChild(newForm);
+        
+        newForm.__TYPE__ = 'object';
+        
+        holder.items.push(newForm);
+        
+        holder.displayAddRemoveSigns();
+        
+        return newForm;
+    };
+    
+    
+    if (holder.config.initItems) {
+        for (var i=0; i<holder.config.initItems; i++) {
+            holder.add();
+        }
+    }
+    
+    holder.setNames = function(prefix) {
+        prefix = prefix || '';
+        for (var i=0; i<holder.items.length; i++) {
+            switch (holder.items[i].__TYPE__) {
+                case 'object':
+                    holder.items[i].setNames(prefix.concat('[').concat(i).concat(']'));
+                    break;
+                default:
+                    throw 'TFormArray: invalid index found at position '+i+': type='+holder.items[i].__TYPE__+'. See object below: ';
+                    console.log(holder.items[i]);
+                    break;
+            }
+        }
+    };
+    
+    return holder;
+}
+
+function TFormObject(config, container) {
+    if (!config) throw 'Expected configuration parameter';
+    var holder = new TFormAbstractContainer(config, container);
+    holder.items  = [];
+    
+    holder.init = function() {
+        var formPart;
+        
+        var searchIn = holder.config.items || holder.config;
+        
+        for (var key in searchIn) {
+            switch (searchIn[key].type) {
+                case 'text':
+                    formPart = new TFormText(searchIn[key]);
+                    formPart.__NAME__ = key;
+                    formPart.__TYPE__ = 'text';
+                    holder.items.push(formPart);
+                    holder.appendChild(formPart);
+                    break;
+                
+                case 'textarea':
+                    formPart = new TFormTextArea(searchIn[key]);
+                    formPart.__NAME__ = key;
+                    formPart.__TYPE__ = 'textarea';
+                    holder.items.push(formPart);
+                    holder.appendChild(formPart);
+                    break;
+                    
+                case 'file':
+                    formPart = new TFormFile(searchIn[key]);
+                    formPart.__NAME__ = key;
+                    formPart.__TYPE__ = 'file';
+                    holder.items.push(formPart);
+                    holder.appendChild(formPart);
+                    break;
+                
+                case 'hidden':
+                    formPart = new TFormHidden(searchIn[key]);
+                    formPart.__NAME__ = key;
+                    formPart.__TYPE__ = 'hidden';
+                    holder.items.push(formPart);
+                    holder.appendChild(formPart);
+                    break;
+                
+                case 'object':
+                    formPart = new TFormObject(searchIn[key]);
+                    formPart.__NAME__ = key;
+                    formPart.__TYPE__ = 'object';
+                    holder.items.push(formPart);
+                    holder.appendChild(formPart);
+                    break;
+                case 'array':
+                    formPart = new TFormArray(searchIn[key]);
+                    formPart.__NAME__ = key;
+                    formPart.__TYPE__ = 'array';
+                    holder.items.push(formPart);
+                    holder.appendChild(formPart);
+                    break;
+                default:
+                    throw 'Invalid item type (item name='+key+'): "'+holder.config[key].type+'"';
+                    break;
+            }
+        }
+    };
+    
+    holder.setNames = function(prefix) {
+        prefix = prefix || '';
+        for (var i=0; i<holder.items.length; i++) {
+            switch (holder.items[i].__TYPE__) {
+                case 'text':
+                case 'textarea':
+                case 'file':
+                case 'hidden':
+                    holder.items[i].compile();
+                    if (holder.items[i].getInput().value)
+                        holder.items[i].getInput().name = (prefix == '' ? '' : prefix+'[')+holder.items[i].__NAME__+(prefix == '' ? '' : ']');
+                    else
+                        holder.items[i].getInput().name = '';
+                    break;
+                case 'object':
+                case 'array':
+                    holder.items[i].setNames( (prefix == '' ? '' : prefix.concat('[')).concat(holder.items[i].__NAME__).concat(prefix == '' ? '' : ']') );
+                    break;
+            }
+        }
+    };
+    
+    holder.init();
+    
+    return holder;
+}
+
+function TForm(config, postURL, submitButton, resetButton) {
+    var aForm = $('form');
+    aForm.method  = 'post';
+    aForm.encoding = 'multipart/form-data';
+    
+    var aFrame = $('iframe');
+    aFrame.name = 'formframe'+getUID();
+    
+    aFrame.style.border = 'none';
+    aFrame.style.width = '0px';
+    aFrame.style.height= '0px';
+    aFrame.style.padding = '0px';
+    aFrame.style.margin = '0px';
+    
+    aForm.appendChild(aFrame);
+    aForm.target = aFrame.name;
+    
+    aForm.___action = postURL;
+    
+    aForm.fired = false;
+    
+    aForm.oldSubmitFunc = aForm.submit;
+    
+    aForm.submit = function(formCompile) {
+        
+        aForm.action = aForm.___action;
+        formCompile = typeof formCompile == 'undefined' ? true : formCompile;
+        if (formCompile) aForm.setNames(); //this routine initializes the name of the form objects
+        aForm.fired = true;
+        aForm.oldSubmitFunc();
+    };
+    
+    aFrame.onload = function() {
+        if (aForm.fired == false) return;
+        aForm.fired = false;
+        
+        aForm.action = '';
+        
+        aForm.endSubmit();
+        
+        if (aFrame.widget) {
+            try {
+                aFrame.widget.onSubmitComplete();
+            } catch(ex) {
+            }
+        }
+    };
+    
+    var holder = new TFormObject(ResolveObjectVars(config), aForm);
+    
+    if (typeof(submitButton) != 'undefined') {
+        aForm.appendChild(new Button(submitButton, function(e) {
+            cancelEvent(e || window.event);
+            aForm.setNames();
+            aForm.beginSubmit();
+            
+            try{
+                aForm.submit(false);
+            } catch(ex) {
+            }
+            return false;
+        })).className = 'TFormSubmit';
+    }
+    
+    if (typeof(resetButton) != 'undefined') {
+        aForm.appendChild(new Button(resetButton, function(e) {
+            cancelEvent(e || window.event);
+        
+            aForm.reset();
+            return false;
+        })).className = 'TFormReset';
+    }
+    
+    aForm.__submitOverlay = aForm.appendChild($('div', 'TFormBeginSubmit'));
+    aForm.__submitOverlay.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><b>LOADING...</b><br /><img src="/img/loadbar.gif" /></td></tr></table>';
+    
+    aForm.beginSubmit = function() {
+        aForm.__submitOverlay.style.display = 'block';
+    };
+    
+    aForm.endSubmit = function() {
+        aForm.__submitOverlay.style.display = '';
+    };
+    
+    //Attach event listeners to submit DOM event of the form, in order to avoid
+    //form submitting by pressing ENTER on a input field directly (without passing
+    //the event through our modified .submit() function
+    if (aForm.addEventListener) { 
+        aForm.addEventListener('submit', function(e) { //Gecko, etc.
+            cancelEvent(e); 
+            aForm.submit();
+        }, true);
+    } else 
+    aForm.attachEvent('onsubmit', function() { //IE way
+        window.event.cancelBubble = true;
+        window.event.returnValue = false;
+        aForm.submit();
+        return false;
+    });
+    
+    //window.frmDBG = aForm;
+    
+    return holder;
+}

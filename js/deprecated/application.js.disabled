@@ -1,0 +1,179 @@
+var ApplicationStates = {
+    'NOT_RUNNING' : 1,
+    'RUNNING'     : 2
+}
+
+function Application_DialogManager( settings, app ) {
+
+    var self    = this;
+    var state  = ApplicationStates.NOT_RUNNING;
+    var dlg = null;
+    
+    Object.defineProperty( this, 'state', {
+        "get": function() {
+            return state;
+        }
+    });
+    
+    this.run = function( args ) {
+        
+        var winParams = settings.settings || {};
+        
+        if ( state == ApplicationStates.RUNNING )
+            return self;
+        
+        dlg = new Dialog( winParams );
+        
+        dlg.closeCallback = function() {
+            var canClose = dlg.onCustomEvent('close');
+            
+            if ( canClose ) {
+                setTimeout( function() {
+                    state = NOT_RUNNING;
+                    dlg = null;
+                }, 1 );
+            }
+            
+            return canClose;
+        };
+        
+        /* Initialize the interf */
+        
+        var interf = settings.interf || [];
+        
+        for ( var i=0, n=interf.length; i<n; i++ ) {
+            /* An interf item is an object consisting of the following stuff:
+               {
+                    "name": <string>
+                    "type": <string>
+                    "args": <array>
+                    "anchors": <DOManchors object>
+                    "style": <Style Object>
+                    "initialize": callable( <parent dialog> dlg )
+               }
+             */
+             ( function( element ){
+                
+                var item;
+                
+                var type = element.type || (function(){ throw "Missing element type!"; return null; })();
+                
+                var args = element.args || [];
+                
+                switch (args.length) {
+                    case 0:
+                        item = new window[ type ]();
+                        break;
+                    case 1:
+                        item = new window[ type ]( args[0] );
+                        break;
+                    case 2:
+                        item = new window[ type ]( args[0], args[1] );
+                        break;
+                    case 3:
+                        item = new window[ type ]( args[0], args[1], args[2] );
+                        break;
+                    case 4:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3] );
+                        break;
+                    case 5:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3], args[4] );
+                        break;
+                    case 6:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3], args[4], args[5] );
+                        break;
+                    case 7:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3], args[4], args[5], args[6] );
+                        break;
+                    case 8:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7] );
+                        break;
+                    case 9:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8] );
+                        break;
+                    case 10:
+                        item = new window[ type ]( args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9] );
+                        break;
+                }
+                
+             } )( interf[i] );
+        }
+        
+        /* Initialize the handlers */
+        
+        var handlers = settings.handlers || {};
+        
+        for ( var key in handlers ) {
+            if ( handlers.propertyIsEnumerable[ key ] ) {
+                dlg.handlers[ key ] = handlers[ key ];
+            }
+        }
+        
+        /* Initialize the events */
+        
+        var events = settings.events || [];
+        
+        for ( var i=0, n=events.length; i<n; i++ ) {
+            if ( events[i] && events[i].name && events[i].callback )
+                dlg.addCustomEventListener( events[i].name, events[i].callback );
+        }
+        
+        
+        /* Set-up state */
+        state = ApplicationStates.RUNNING;
+        
+    }
+    
+    Object.defineProperty( this, 'wnd', {
+        "get": function() {
+            return dlg;
+        }
+    } );
+    
+    return this;
+}
+
+function Application( init ) {
+
+    this.init = init || {};
+    var pid  = getUID();
+    var app  = this;
+    
+    Object.defineProperty( this, 'pid', {
+        "get": function() {
+            return pid;
+        }
+    } );
+    
+    this._constructor = function() {
+    
+        if ( typeof this.init.dialogs == 'undefined' || !( this.init.dialogs instanceof Array ) ) {
+            console.info("Application._constructor: this.init.dialogs will be set to default values!");
+            this.init.dialogs = [];
+        }
+        
+        this.dialogs = {};
+        
+        for ( var i=0,n=this.init.dialogs.length; i<n; i++ ) {
+            ( function( cfg ) {
+                
+                var manager = new Application_DialogManager( cfg, this );
+                
+                Object.defineProperty( app.dialogs, cfg.name, {
+                    "get": function() {
+                        return manager;
+                    }
+                } );
+                
+            } )( this.init.dialogs[i] );
+        }
+    
+        if ( typeof init.main != 'undefined' )
+            this.dialogs[ init.main ].run();
+    
+    }
+    
+    this._constructor();
+    
+    return this;
+}

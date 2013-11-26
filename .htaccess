@@ -1,0 +1,29 @@
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    BrowserMatch chromeframe gcf
+    Header append X-UA-Compatible "chrome=1" env=gcf
+  </IfModule>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    RewriteBase /
+
+    RewriteRule ^jfs/([a-z,0-9,A-Z]+)/([^*]+)$ loader.php?parts=$1&__file=$2&%{QUERY_STRING} [L]
+    RewriteRule ^vfs/([^*]+)$ loader.php?bin=1&__file=$1&%{QUERY_STRING} [L]
+    RewriteRule ^proxy/([^*]+)$ bin/remoteXHR/index.php?@@uri=$1&%{QUERY_STRING} [L]
+    RewriteRule ^out/$ bin/output-saver/index.php
+    RewriteRule ^onedb(\:|\/|\()([^*]+)?$ classes/OneDB/_htaccess.php?_URI_=$0&%{QUERY_STRING} [L]
+
+</IfModule>
+
+php_value session.auto_start 0
+php_value include_path .:/usr/share/php:/usr/share/pear:classes:classes/*:classes/OneDB/*
+php_value register_globals Off
+php_value zlib.output_compression 16386
+php_value post_max_size 800M
+php_value upload_max_filesize 800M
+php_value memory_limit 800M
+php_value xdebug.profiler_enable 0
+php_value auto_prepend_file /srv/jsplatform/classes/OneDB/_autostart.php

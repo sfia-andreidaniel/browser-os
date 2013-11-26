@@ -1,0 +1,30 @@
+input[type=checkbox].DOM2Checkbox {
+    width: 14px !important;
+    height: 14px !important;
+    padding: 0;
+    -webkit-appearance: push-button !important;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #ddd;
+    border-radius: 2px;
+    border: 1px inset #ddd;
+    vertical-align: middle;
+}
+
+input[ivalue].DOM2Checkbox,
+input[ivalue=none].DOM2Checkbox {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhE1IgdztGcAAABjSURBVBjTxdCxDcQgEETRvxYVkCAyIvqhYUQREEMbSwDXwBk784+fJhipteK951TvHeOcw1oLsG+crLUwc06AnVL6q1pru5Qil6rylKpy8bIPoQGIMcrpHgDJORNCOK6NMfgB31MhFCSSl/gAAAAASUVORK5CYII=);
+}
+
+input[ivalue=false].DOM2Checkbox {
+    background-image: none !important;
+}
+
+input[ivalue=true].DOM2Checkbox,
+input[ivalue=allow].DOM2Checkbox {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhE4FpNpPp8AAACMSURBVBjTfY4xDoMwDEVfIg7AECHlBhnZPOQUHJrBe7J7zw1Y6NCCUgr1ZP3//GRXSiHGyL9JKeFaa4QQHqFpmnaAYds2AJZl+YHWdd2P3c/zfGvqIVV1HtgP/R0EOBHBX8sr9DHiVdU9mQDGcXz/KCJneIVyzmfgVfWr7E211hMczAxVpTd3xwCYGS96MTsEWFMk1QAAAABJRU5ErkJggg==);
+}
+
+input[ivalue=deny].DOM2Checkbox {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhE6CFtQYX4AAACkSURBVBjTfZCxDsIwDERfEB9QUaV/AAvd+xvmh7NXKlsnKnnL0qj8ghlQaFMQlm45n+7OduM4cm1bey6L48ec6truw+CcgX1Ys1Ls3LqLMWJgGSKCiBRcjBFUFTMrFlt471FVDtn5JvLVsfHeAXRdtwr/Td/3HAGapmFOyfaCOSW7nM/vJO89+057TlUp3pM7AVRVxWOa1pQQAlunfGWGgYUQeAHDRGmsPkEW9QAAAABJRU5ErkJggg==);
+}

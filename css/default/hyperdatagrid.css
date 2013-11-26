@@ -1,0 +1,676 @@
+div.DOM_HyperDataGrid {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid #666;
+}
+
+div.DOM_HyperDataGrid > div {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+div.DOM_HyperDataGrid_TopEdge {
+    position: absolute;
+    display: block;
+    left: 51px;
+    top: 0px;
+    right: 0px;
+    height: 20px;
+    border-bottom: 1px outset #666;
+    border-left: 1px outset #666;
+    
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+    background-image: url(hyperdatagrid/edge-top.png);
+    
+    z-index: 400;
+}
+
+div.DOM_HyperDataGrid_SwapCandidate {
+    background-color: #666 !important;
+    color: white !important;
+    background-image: none !important;
+}
+
+div.DOM_HyperDataGrid_LeftEdge {
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 20px;
+/*     bottom: 0px; */
+    border-right: 1px outset #666;
+    border-top: 1px outset #666;
+    width: 50px;
+    
+    /* background-color: #666; */
+    background-repeat: repeat-y;
+    background-position: 50% 50%;
+    background-image: url(hyperdatagrid/edge-left.png);
+    
+    z-index: 1000;
+    
+/*    overflow-y: hidden;
+    overflow-x: visible;*/
+}
+
+div.DOM_HyperDataGrid_LeftEdge > div {
+    position: relative;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+
+div.DOM_HyperDataGrid_TopLeftCorner {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 50px;
+    height: 20px;
+    border-right: 1px outset #666;
+    border-bottom: 1px outset #666;
+    
+    background-repeat: repeat-y;
+    background-position: 50% 50%;
+    background-image: url(hyperdatagrid/edge-left.png);
+    
+    z-index: 1000;
+    
+    text-align: center;
+}
+
+div.DOM_HyperDataGrid_TopLeftCorner > div {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: center;
+    width: 33%;
+    height: 100%;
+    cursor: default;
+    overflow: hidden;
+}
+
+div.DOM_HyperDataGrid_TopLeftCorner > div:hover {
+    background-color: #666;
+    color: white;
+}
+
+div.DOM_HyperDataGrid_TopLeftCorner:active {
+    border-right: 1px inset #666;
+    border-bottom: 1px inset #666;
+}
+
+div.DOM_HyperDataGrid_Body {
+    position: relative;
+    display: block;
+    left: 52px;
+    top: 21px;
+    right: 17px;
+    overflow: hidden;
+    z-index: 990;
+/*     background-color: red; */
+}
+
+div.DOM_HyperDataGrid_VerticalScrollbar {
+    width: 16px;
+    position: absolute;
+    top: 21px;
+    right: 0px;
+    bottom: 20px;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 1000;
+}
+
+div.DOM_HyperDataGrid_HorizontalScrollbar {
+    height: 16px;
+    position: absolute;
+    left: 51px;
+    bottom: 0px;
+    right: 20px;
+    display: block;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border-right: 2px groove #ddd;
+    min-height: 15px;
+    background-color: #666;
+}
+
+div.DOM_HyperDataGrid_HorizontalScrollbar > div {
+    height: 100%;
+    background-color: #444;
+}
+
+div.DOM_HyperDataGrid_ScrollbarSize {
+    display: block;
+    position: relative;
+    width: 0px;
+    height: 0px;
+    border-left: 1px solid #777;
+    border-top: 1px solid #777;
+}
+
+div.HyperDataGrid_Column {
+    width: 100px;
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+    background-image: url(hyperdatagrid/edge-top-selected.png);
+    border-left: 1px outset #666;
+    border-right: 1px outset #666;
+
+    z-index: 100; /* To cover the column selector */
+}
+
+div.HyperDataGrid_Column > div {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.HyperDataGrid_ColumnCaption {
+    position: absolute;
+    font-size: 12px;
+    text-align: left;
+    overflow: hidden;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    
+    cursor: default;
+    
+    white-space: nowrap;
+    color: white;
+}
+
+div.HyperDataGrid_Column > div > div.HyperDataGrid_SortSign {
+    position: absolute;
+    width: 16px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+div.HyperDataGrid_SortSign.SortAscending {
+    /* Sprite to sort ascending picture */
+    background-image: url(hyperdatagrid/sort-ascending.png);
+}
+
+div.HyperDataGrid_SortSign.SortDescending {
+    /* Sprite to sort descending picture */
+    background-image: url(hyperdatagrid/sort-descending.png);
+}
+
+div.HyperDataGrid_ColumnSelector {
+    background-color: #ffd3b3;
+    position: absolute;
+    display: block;
+    top: 0px;
+}
+
+div.HyperDataGrid_Resizer {
+    position: absolute;
+    top: 0px;
+    width: 2px;
+    height: 20px;
+    display: block;
+    z-index: 2000;
+    
+    cursor: col-resize;
+}
+
+div.HyperDataGrid_Resizer.onDrag {
+    background-color: black;
+}
+
+div.HyperDataGrid_Resizer_Tooltip_VerticalColumn {
+    background-color: white;
+    position: absolute;
+    padding: 2px;
+    font-size: 10px;
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    left: 2px;
+    right: 2px;
+    text-align: center;
+    z-index: 10000;
+}
+
+div.HyperDataGrid_Resizer_Tooltip_TopHeader {
+    background-color: white;
+    position: absolute;
+    padding: 2px;
+    font-size: 10px;
+    display: block;
+    background-color: white;
+    border: 1px solid black;
+    top: 2px;
+    bottom: 2px;
+    text-align: center;
+    z-index: 10000;
+    min-height: 12px;
+}
+
+div.DOM_HyperDataGrid_Row {
+    position: absolute;
+    display: block;
+    left: 0px;
+    height: 20px;
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: default;
+}
+
+div.DOM_HyperDataGrid_Row.focused {
+    background-image: url(hyperdatagrid/focused-row.png) !important;
+    background-position: 50% 50%;
+    background-repeat: repeat-x;
+    color: white;
+}
+
+div.DOM_HyperDataGrid_Row.selected {
+    background-color: #bbbbbb !important;
+    background-image: none !important;
+}
+
+div.DOM_HyperDataGrid_RowHandle {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: 1px;
+    height: 21px;
+    display: block;
+    border-bottom: 1px outset #666;
+    overflow: hidden;
+    text-align: right;
+    cursor: default;
+    color: #bbb;
+}
+
+div.DOM_HyperDataGrid_RowHandle.selected {
+    color: white;
+}
+
+/* Placeholder for the tags */
+div.DOM_HyperDataGrid_RowHandle > div {
+    display: inline-block;
+    position: relative;
+    width: 1px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: visible;
+    float: left;
+}
+
+div.DOM_HyperDataGrid_RowHandle > div > div {
+    display: block;
+    position: absolute;
+    
+    width: 16px;
+    height: 16px;
+    top: 2px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    cursor: help;
+}
+
+div.HyperDataGrid_TAG_error {
+    background-image: url('../../jsplatform/img/hyperdatagrid/TAG_error-16x16.png');
+}
+
+div.HyperDataGrid_TAG_warning {
+    background-image: url('../../jsplatform/img/hyperdatagrid/TAG_warning-16x16.png');
+}
+
+div.HyperDataGrid_TAG_inserted {
+    background-image: url('../../jsplatform/img/hyperdatagrid/TAG_saved-16x16.png');
+}
+
+div.HyperDataGrid_TAG_modified {
+    background-image: url('../../jsplatform/img/hyperdatagrid/TAG_modified-16x16.png');
+}
+
+
+div.HyperDataGrid_TAG_info {
+    background-image: url('../../jsplatform/img/hyperdatagrid/TAG_info-16x16.png');
+}
+
+div.DOM_HyperDataGrid_MenuHolder {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: block;
+    border-left: 1px outset #666;
+    overflow: hidden;
+}
+
+div.DOM_HyperDataGrid_RowHandle > b.focus {
+    display: block;
+    float: right;
+}
+
+div.DOM_HyperDataGrid_Row_Resizer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 1px;
+    height: 2px;
+    display: block;
+    border-top: 2px solid black;
+    cursor: row-resize;
+    z-index: 1000;
+}
+
+div.DOM_HyperDataGrid_RowHandle.selected {
+    background-repeat: repeat-y;
+    background-position: 50% 50%;
+    background-image: url(hyperdatagrid/edge-left-selected.png);
+    font-weight: bold;
+}
+
+div.DOM_HyperDataGrid_Cell {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    padding: 2px 0px 2px 1px;
+    border-right: 1px solid black;
+    
+    width: 100px;
+    font-size: 11px;
+    white-space: normal;
+    overflow: hidden;
+    
+    margin-top: 0px;
+}
+
+div.DOM_HyperDataGrid_Cell.editing
+{
+/*     outline: 2px inset orange; */
+}
+
+div.DOM_HyperDataGrid_Cell {
+    text-overflow: ellipsis;
+}
+
+div.DOM_HyperDataGrid_Cell.date,
+div.DOM_HyperDataGrid_Cell.string {
+    white-space: nowrap;
+}
+
+div.DOM_HyperDataGrid_Cell.string {
+    color: black;
+    text-align: left;
+}
+
+div.DOM_HyperDataGrid_Cell.string > input[type=text] {
+    background-color: transparent;
+    color: white !important;
+}
+
+div.DOM_HyperDataGrid_Cell.number {
+    color: green;
+    text-align: right;
+    white-space: nowrap;
+}
+
+div.DOM_HyperDataGrid_Cell.number > div.DomSpinner,
+div.DOM_HyperDataGrid_Cell.number > div.DomSpinner > div.DomSpinnerInner,
+div.DOM_HyperDataGrid_Cell.number > div.DomSpinner > div.DomSpinnerInner > input[type=text] {
+    background-color: transparent;
+    color: white !important;
+}
+
+
+div.DOM_HyperDataGrid_Cell.boolean {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+div.DOM_HyperDataGrid_Cell input[type=checkbox] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    
+    outline: 1px dotted black;
+}
+
+div.DOM_HyperDataGrid_Cell.boolean.true {
+    background-image: url(hyperdatagrid/boolean-true-16x16.png);
+}
+
+div.DOM_HyperDataGrid_Cell.text {
+    white-space: pre;
+}
+
+div.DOM_HyperDataGrid_Cell.text > textarea {
+    background-color: transparent;
+    color: white !important;
+}
+
+div.DOM_HyperDataGrid_Cell.text > b.text {
+    position: absolute;
+    z-index: -1;
+    top: 2px;
+    right: 2px;
+    border: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(hyperdatagrid/text-16x16.png);
+    opacity: 0.3;
+}
+
+div.DOM_HyperDataGrid_Cell.multiple {
+    
+}
+
+div.DOM_HyperDataGrid_Cell.multiple > select {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 0;
+    margin: 0;
+    display: block;
+    border: 0;
+    
+    width: 100%;
+    
+    background-color: transparent;
+}
+
+div.DOM_HyperDataGrid_Cell.date {
+    
+}
+
+div.DOM_HyperDataGrid_Cell.date > input[type=text] {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+div.DOM_HyperDataGrid_Cell.date > input[type=text].disable-focus {
+    background-color: red !important;
+    color: white !important;
+}
+
+div.DOM_HyperDataGrid_Cell.focused {
+    background-image: url(hyperdatagrid/focused-cell.png);
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+    color: white;
+}
+
+div.DOM_HyperDataGrid_Cell > b.warning {
+    position: absolute;
+    z-index: -1;
+    top: 2px;
+    right: 2px;
+    border: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
+    background-image: url(hyperdatagrid/warning-16x16.png);
+}
+
+div.DOM_HyperDataGrid_Keyboard {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url(hyperdatagrid/keyboard-16x16.png);
+    opacity: 0.5;
+}
+
+div.DOM_HyperDataGrid_Keyboard.on {
+    opacity: 1;
+    outline: 1px inset #888;
+}
+
+div.DOM_HyperDataGrid_Menu {
+    width: 22px;
+    height: 23px;
+    position: absolute;
+    right: 0px;
+    top: -3px;
+    z-index: 10000;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+div.DOM_HyperDataGrid_Menu .DomMenuBar {
+    background-color: transparent;
+    background-image: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+div.DOM_HyperDataGrid_Menu .DomMenuBarTable,
+div.DOM_HyperDataGrid_Menu .DomMenuBarTable > tbody > tr,
+div.DOM_HyperDataGrid_Menu .DomMenuBarTable > tbody > tr > td {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+div.DOM_HyperDataGrid_Menu .DomMenuBarTable > tbody > tr > td {
+    padding-left: 10px;
+    padding-right: 10px;
+    background-image: url(hyperdatagrid/settings-16x16.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height:100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+div.HyperDataGrid_TSortableHolder {
+    
+    position: absolute;
+    background-color: white;
+    top: 40px;
+    left: 5px;
+    right: 5px;
+    bottom: 45px;
+    border: 1px groove #ddd;
+    display: block;
+    padding: 5px;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+div.HyperDataGrid_TSortableHolder > div {
+    background-color: #ddd;
+    border: 1px solid #ddd;
+    margin: 5px;
+    display: block;
+    padding: 5px;
+    position: relative;
+    height: 20px;
+}
+
+div.HyperDataGrid_TSortableHolder > div:hover {
+    background-color: #888;
+}
+
+div.HyperDataGrid_TSortableHolder > div > select.columnName,
+div.HyperDataGrid_TSortableHolder > div > select.sortOrder {
+    border: 0;
+    top: 5px;
+    bottom: 6px;
+    display: block;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+
+div.HyperDataGrid_TSortableHolder > div > select.columnName {
+    left: 5px;
+    right: 100px;
+    width: auto !important;
+}
+
+div.HyperDataGrid_TSortableHolder > div > select.sortOrder {
+    width: 64px;
+    right: 35px;
+}
+
+div.HyperDataGrid_TSortableHolder > div > img {
+    position: absolute;
+    display: block;
+    border: none;
+    right: 4px;
+    top: 4px;
+    cursor: pointer;
+}
+
+div.HyperDataGrid_TSortableHolder > div > img:hover {
+    outline: 2px inset #888;
+}

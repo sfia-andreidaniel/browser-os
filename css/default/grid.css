@@ -1,0 +1,148 @@
+
+/* DataGrid */
+.DOMGrid { 
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+    border: 1px solid #666; 
+    background-color: white; 
+    overflow: hidden; 
+}
+
+.DOMThead                         { 
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    right: 0px; 
+    height: 20px; 
+    overflow: hidden; 
+    background-image: url(hyperdatagrid/edge-top.png); 
+    background-repeat: repeat-x; 
+    background-position: 0% 50%; 
+    font-weight: bold; 
+}
+
+.DOMThead div.DOMCell {
+    background-image: url(hyperdatagrid/edge-top-selected.png); 
+    background-repeat: repeat-x; 
+    background-position: 0% 50%; 
+    color: white;
+    border-right: 1px inset black;
+}
+
+.DOMThead div.DOMCell:hover { 
+    cursor: default; 
+    back
+}
+
+.DOMTbody { 
+    position: absolute; 
+    top: 21px; 
+    left: 0px; 
+    right: 0px; 
+    bottom: 20px; 
+    overflow: auto !important; 
+}
+
+.DOMRowsHolder { 
+    display: block !important; 
+    position: relative !important; 
+    width: auto; 
+    height: 100%; 
+}
+
+.DOMTbody div.DOMRow div.DOMCell:focus { 
+    background-color: #333 !important; 
+    color: white !important; 
+    height: 20px; 
+    overflow: hidden !important; 
+}
+
+.DOMTfoot { 
+    position: absolute; 
+    height: 19px; 
+    left: 0px; 
+    right: 0px; 
+    bottom: 0px; 
+    background-color: #888; 
+    display: block; 
+    overflow: hidden; 
+}
+
+.DOMTfoot div { 
+    padding: 2px; 
+    color: #eee;
+    text-shadow: 1px 1px 1px black;
+    margin-right: 5px; 
+    font-size: 11px; 
+    margin-top: 1px; 
+    height: 14px; 
+    float: left; 
+    border: 1px inset #ddd;
+    min-width: 30px; 
+}
+
+.DOMCell { 
+    position: relative; 
+    display: table-cell; 
+    width: auto;
+    height: 20px; 
+    padding-left: 2px; 
+    padding-right: 2px;
+    overflow: hidden !important; 
+    font-size: inherit !important;
+    color: inherit; 
+    white-space: pre; 
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent; 
+    cursor: default; 
+}
+
+.DOMCellHTML { 
+    width: 100px; 
+    height: 100%; 
+    position: relative; 
+    color: inherit; 
+    overflow: hidden !important; 
+    margin: 0px;
+    padding: 0px;
+    white-space: pre;
+    text-overflow: ellipsis;
+}
+ 
+.DOMCellHTML input.TextEditor     {
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    top: -2px;
+    bottom: -2px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 11px;
+    padding-top: 2px;
+}
+
+.DOMRow { 
+    display: block; 
+    white-space: nowrap; 
+    position: absolute; 
+    left: 0px; 
+}
+
+.DOMGrid.noBorders .DOMRow > div {
+    border: none !important;
+}
+
+.DOMRowSelected { 
+    background-color: #333 !important; 
+    color: white !important; 
+}
+
+.DOMTbody div.DOMRow:hover        { background-color: #ddd; }
+.DOMHeaderPreserveScroll          { display: table-cell; width: 1px; height: 100%; padding-right: 20px; }
+.DOMCellResize                    { position: absolute; right: -2px; top: 0px; height: 20px; width: 5px; cursor: col-resize; }
+.DOMCellHTML div.sorter           { position: absolute; width: 10px; height: 10px; right: 3px; top: 5px; background-position: 50% 50%; background-repeat: no-repeat; }
+.DOMSortAscending                 { background-image: url(grid/spinner-up.png); }
+.DOMSortDescending                { background-image: url(grid/spinner-down.png); }
+.DOMGridStatusXY                  { width: auto; text-align: center; }

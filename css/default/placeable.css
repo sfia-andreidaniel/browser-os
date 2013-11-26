@@ -1,0 +1,83 @@
+div.DOMPlaceable {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+div.DOMPlaceable > div {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+div.DOMPlaceable > legend {
+    position: absolute;
+    padding: 2px 5px 2px 5px;
+    margin: -19px 0px 0px 10px;
+    background-color: #333;
+    color: white;
+    line-height: 1em;
+    font-size: 12px;
+    border-style: inherit;
+    border-color: inherit;
+    border-bottom-width: 0px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-left-width: inherit;
+    border-right-width: inherit;
+    border-top-width: inherit;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+div.DOMPlaceable.appearence-opaque > legend,
+div.DOMPlaceable.appearence-invisible > legend {
+    top: 3px !important;
+}
+
+div.DOMPlaceable.appearence-groove > legend {
+    top: 1px !important;
+}
+
+div.DOMPlaceable.appearence-outset > legend,
+div.DOMPlaceable.appearence-inset > legend {
+    top: 2px !important;
+}
+
+div.DOMPlaceable.appearence-invisible {
+    color: inherit;
+}
+
+div.DOMPlaceable.appearence-invisible > legend {
+    background-color: transparent;
+    color: inherit;
+}
+
+div.DOMPlaceable.appearence-opaque {
+    background-color: #333;
+    border: none;
+}
+
+div.DOMPlaceable.appearence-groove {
+    background-color: #333;
+    border: 2px groove #888;
+}
+
+div.DOMPlaceable.appearence-ridge {
+    background-color: #333;
+    border: 2px ridge #888;
+}
+
+div.DOMPlaceable.appearence-inset {
+    background-color: #333;
+    border: 1px inset #888;
+}
+
+div.DOMPlaceable.appearence-outset {
+    background-color: #333;
+    border: 1px outset #888;
+}

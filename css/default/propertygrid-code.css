@@ -1,0 +1,27 @@
+div.PropertyGrid_Code {
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    right: 35px;
+    bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+}
+
+button.PropertyGrid_Code_Browse {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    height: auto;
+    width: 30px;
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+}

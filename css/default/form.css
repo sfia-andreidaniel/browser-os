@@ -1,0 +1,121 @@
+.TForm, .TFormContainer {
+    display: block;
+    position: relative;
+    border: 2px groove #ddd;
+    background-color: white;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 2px;
+}
+
+form.TFormContainer {
+    margin: -2px;
+    padding: 10px;
+    border: none;
+}
+
+.TFormLegend {
+    display: none;
+    position: absolute;
+    left: 5px;
+    top: -10px;
+    background-color: #666;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    
+    font-weight: bold;
+}
+
+.TFormArrayAdd, .TFormArrayRemove {
+    display: block;
+    position: absolute;
+    left: 5px;
+    bottom: -9px;
+    background-image: url("form/add_sign.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 16px !important;
+    height: 16px !important;
+    
+    cursor: pointer;
+}
+
+.TFormArrayRemove {
+    background-image: url("form/remove_sign.png");
+}
+
+.TFormIconHelp {
+    display: none;
+    width: 16px;
+    height: 16px;
+    background-image: url("form/help_sign.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+    cursor: help;
+}
+
+.TFormVisible {
+    display: block;
+}
+
+.TFormTable {
+    display: block;
+}
+
+.TFormTable td {
+    padding: 2px;
+}
+
+.TFormTable td.TFormLabel {
+    vertical-align: middle;
+    text-align: left;
+    width: 100px;
+    color: black;
+}
+
+.TFormTable td.TFormInput {
+    width: 300px;
+    vertical-align: middle;
+}
+
+.TFormTable td.TFormInput > input,
+.TFormTable td.TFormInput > textarea {
+    display: block;
+    width: 98%;
+}
+
+.TFormTable td.TFormHelp {
+    width: 16px;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.TFormSubmit,
+.TFormReset {
+    margin-right: 5px;
+}
+
+.TFormBeginSubmit {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url('form/gray_50.png');
+    background-repeat: repeat;
+    display: none;
+}

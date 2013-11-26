@@ -1,0 +1,38 @@
+table.table-edit-mode {
+    border-collapse: collapse;
+}
+
+table.table-edit-mode.cursor-default,
+table.table-edit-mode.cursor-default * {
+    
+}
+
+table.table-edit-mode.cursor-width-resize,
+table.table-edit-mode.cursor-width-resize * {
+    cursor: col-resize !important;
+}
+
+table.table-edit-mode.cursor-height-resize,
+table.table-edit-mode.cursor-height-resize * {
+    cursor: row-resize !important;
+}
+
+table.table-edit-mode.cursor-col-resize,
+table.table-edit-mode.cursor-col-resize * {
+    cursor: col-resize !important;
+}
+
+table.table-edit-mode.cursor-row-resize,
+table.table-edit-mode.cursor-row-resize * {
+    cursor: row-resize !important;
+}
+
+table.table-edit-mode.cursor-border-split,
+table.table-edit-mode.cursor-border-split * {
+    cursor: default !important;
+}
+
+table.table-edit-mode.cursor-border-merge,
+table.table-edit-mode.cursor-border-merge * {
+    cursor: crosshair !important;
+}

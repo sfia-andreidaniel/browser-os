@@ -1,0 +1,144 @@
+div.DOMTagsEditor {
+    display: block;
+    background-color: white;
+    background-image: url(tags/dictando.png);
+    background-position: 0px 2px;
+}
+
+div.DOMTagsEditor > div {
+    position: relative;
+    display: block;
+    overflow-y: auto;
+}
+
+div.DOMTagsEditor > div > input[type=text] {
+    background-color: transparent;
+    border: 1px solid transparent;
+    height: 20px;
+    padding: 0px 5px 0px 5px;
+    float: left;
+    width: 1px;
+    font-size: 12px;
+    outline: none;
+}
+
+div.DOMTagsEditor > div > div.keyword > input[type=checkbox] {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+div.DOMTagsEditor.readOnly > div > input[type=text],
+div.DOMTagsEditor.disabled > div > input[type=text] {
+    display: none;
+}
+
+div.DOMTagsEditor.readOnly > div > div.keyword > div,
+div.DOMTagsEditor.disabled > div > div.keyword > div {
+    display: none;
+}
+
+div.DOMTagsEditor.readOnly > div > div.keyword.check,
+div.DOMTagsEditor.disabled > div > div.keyword.check {
+    border-color: transparent;
+    color: #888;
+    text-shadow: 1px 1px 1px white;
+}
+
+
+
+div.DOMTagsEditor.readOnly > div > div.keyword,
+div.DOMTagsEditor.disabled > div > div.keyword {
+    padding-right: 5px;
+}
+
+div.DOMTagsEditor.disabled > div > div.keyword {
+    background-color: #333;
+    color: #ddd;
+    border: 1px inset #ddd;
+}
+
+div.DOMTagsEditor.disabled > div {
+    background-color: #ddd;
+}
+
+div.DOMTagsEditor > div > input[type=text]:focus {
+    border-color: black;
+}
+
+div.DOMTagsEditor > div > div.keyword.check {
+    margin-right: -16px;
+}
+
+div.DOMTagsEditor.disabled > div > div.keyword.check,
+div.DOMTagsEditor.readOnly > div > div.keyword.check {
+    margin-right: 0px;
+}
+
+div.DOMTagsEditor > div > div.keyword,
+div.DOMTagsEditor > div > input[type=text] {
+    float: left;
+    height: 20px;
+    display: block;
+    margin: 1px 1px 1px 1px;
+    border-radius: 5px;
+}
+
+div.DOMTagsEditor > div > div.keyword.check {
+    background-color: transparent;
+    color: black;
+}
+
+div.DOMTagsEditor > div > div.keyword {
+    padding-top: 5px;
+    background-color: rgb(147, 245, 243);
+    padding-left: 5px;
+    padding-right: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    position: relative;
+    white-space: nowrap;
+}
+
+div.DOMTagsEditor > div > div.keyword > div {
+    position: absolute;
+    right: 2px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAA3NCSVQICAjb4U/gAAAAnFBMVEX////4YWP/dXjyS07/dXj9bXD6a234YWP4XWD2WVv2VFfsOTzoLzHmKSvkISP2VFf0TE/vREftPT/iHB72WVvvREf0TE//hon/gYX/fYD/e33/dXj/cXP9bXD/a236a23/Zmb4YWP4XWD/Wl32WVv/VVj2VFf3VFb0TE/yS072SUvvREfuQELtPT/sOTzrMzXoLzHnLC/mKSvkISPh2jkWAAAANHRSTlMAESIiMzMzMzMzMzMzMzNERERERHd3qv//////////////////////////////////////xnOhPwAAAAlwSFlzAAALEgAACxIB0t1+/AAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAAJJJREFUGJVtzNcagjAMBtC498TVZWktFaEVx/u/mx2gXJibPyf5EoBWders9mOOd6toQgbBgh96wQjRobPkWO79huIj5qPgMt5ycqJCctIYQDCEMVFfAyh8yWjLE0UyN5j9LChl56udR0+dlbnnaV4tajNtAKoyLZ5LN1hroa3fvEzxSHyzudl4+44G2DbfE/hTH+8DDcV0Y3OAAAAAAElFTkSuQmCC);
+    background-position: 50% 50%;
+    cursor: pointer;
+}
+
+div.DOMTagsEditorOverlay {
+    min-width: 50px;
+    max-width: 150px;
+    display: block;
+    position: absolute;
+    z-index: 1000000;
+    max-height: 150px;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+    border: 1px solid black;
+    overflow-y: auto;
+    overflow-x: visible;
+}
+
+div.DOMTagsEditorOverlay > div {
+    font-size: 10px;
+    white-space: pre !important;
+    font-family: Arial, sans-serif;
+    display: block;
+    overflow: hidden;
+    padding-right: 20px;
+}
+
+div.DOMTagsEditorOverlay > div.focus,
+div.DOMTagsEditorOverlay > div:focus,
+div.DOMTagsEditorOverlay > div:hover {
+    background-color: blue;
+    color: white;
+}

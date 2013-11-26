@@ -1,0 +1,94 @@
+div.DOMCropper {
+    display: block;
+    outline: 1px inset #ddd;
+}
+
+div.DOMCropper > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+}
+
+div.DOMCropper > div > div {
+    background-color: rgba(0,0,0,.5);
+}
+
+div.DOMCropper > div > div {
+    position: absolute;
+    display: block;
+}
+
+div.DOMCropper > div > div.top {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 0px;
+}
+
+div.DOMCropper > div > div.left {
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 1px;
+}
+
+div.DOMCropper > div > div.right {
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 0px;
+}
+
+div.DOMCropper > div > div.bottom {
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 0px;
+}
+
+div.DOMCropper > div > div.drag {
+    display: block;
+    background-color: black;
+    z-index: 1000;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+}
+
+div.DOMCropper div.drag-left {
+    cursor: w-resize;
+}
+
+div.DOMCropper div.drag-right {
+    cursor: e-resize;
+}
+
+div.DOMCropper div.drag-top {
+    cursor: n-resize;
+}
+
+div.DOMCropper div.drag-bottom {
+    cursor: s-resize;
+}
+
+div.DOMCropper div.drag-top-right {
+    cursor: ne-resize;
+}
+
+div.DOMCropper div.drag-top-left {
+    cursor: nw-resize;
+}
+
+div.DOMCropper div.drag-bottom-right {
+    cursor: se-resize;
+}
+
+div.DOMCropper div.drag-bottom-left {
+    cursor: sw-resize;
+}
+
+div.DOMCropper div.drag-center {
+    cursor: move;
+}

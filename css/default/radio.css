@@ -1,0 +1,14 @@
+input[type=radio] {
+    -webkit-appearance: push-button !important;
+    background-repeat: no-repeat;
+    width: 14px !important;
+    height: 14px !important;
+    background-color: white;
+    border-radius: 9px;
+    border: 1px inset #ddd;
+    background-position: 50% 50%;
+}
+
+input[type=radio]:checked {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CFhcNFazc0SEAAAB3SURBVBjTtY0xCgQhFEOfw5zARqaz0fP4L+wptP16DgudbpldFtlmA4GQPIgppXBdFzu11jidc1hrt+Cck2OMAYCIYIxZT4sIMUbGGKCqrLUA1jeHEFBVDn7UH8GUkvkcn90JEGMEIITwBtdaX9nknPHeb29779zBuC5B9xcAzgAAAABJRU5ErkJggg==);
+}

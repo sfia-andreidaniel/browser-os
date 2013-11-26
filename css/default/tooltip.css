@@ -1,0 +1,241 @@
+.DomTooltipOuter {
+    position: absolute;
+    display: block;
+    overflow: visible;
+    
+    z-index: 1000000;
+}
+
+.DomTooltipOuter>.DomTooltipInner {
+    position: relative;
+    display: block;
+    overflow: visible;
+}
+
+.DomTooltipInner>.lt,
+.DomTooltipInner>.rt,
+.DomTooltipInner>.lb,
+.DomTooltipInner>.rb {
+    background-image: url(tooltip/corners.png);
+    background-repeat: no-repeat;
+    width: 7px;
+    height: 7px;
+    display: block;
+    position: absolute;
+}
+
+.DomTooltipInner>.lt {
+    left: 0px;
+    top: 0px;
+    background-position: -9px -9px;
+}
+
+.DomTooltipInner>.rt {
+    right: 0px;
+    top: 0px;
+    background-position: -16px -9px;
+}
+
+.DomTooltipInner>.l {
+    left: 0px;
+    background-position: -41px 0px;
+}
+
+.DomTooltipInner>.r {
+    right: 0px;
+    background-position: -48px 0px;
+}
+
+.DomTooltipInner>.t {    
+    top: 0px;
+    background-position: 0px -41px;
+}
+
+.DomTooltipInner>.b {
+    bottom: 0px;
+    background-position: 0px -48px;
+}
+
+.DomTooltipInner>.lb {
+    left: 0px;
+    bottom: 0px;
+    background-position: -9px -16px;
+}
+
+.DomTooltipInner>.rb {
+    right: 0px;
+    bottom: 0px;
+    background-position: -16px -16px;
+}
+
+.DomTooltipInner>.l,
+.DomTooltipInner>.r {
+    background-image: url(tooltip/v_arrows.png);
+    background-repeat: no-repeat;
+    width: 7px;
+    top: 7px;
+    bottom: 7px;
+    position: absolute;
+    display: block;
+}
+
+.DomTooltipInner>.t,
+.DomTooltipInner>.b {
+    background-image: url(tooltip/h_arrows.png);
+    background-repeat: no-repeat;
+    height: 7px;
+    left: 7px;
+    right: 7px;
+    position: absolute;
+    display: block;
+}
+
+.DomTooltipInner>.content {
+    display: block;
+    padding: 10px;
+    color: white;
+}
+
+.DomTooltipInner>.bg {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    bottom: 7px;
+    right: 7px;
+    background-image: url(tooltip/background.png);
+    z-index: -1;
+}
+
+/** Left Attached **/
+
+.DomTooltipOuter.left>.DomTooltipInner>.l,
+.DomTooltipOuter.left>.DomTooltipInner>.lt,
+.DomTooltipOuter.left>.DomTooltipInner>.lb {
+    width: 16px !important;
+}
+
+.DomTooltipOuter.left>.DomTooltipInner>.t,
+.DomTooltipOuter.left>.DomTooltipInner>.b {
+    left: 16px !important;
+}
+
+.DomTooltipOuter.left>.DomTooltipInner>.content {
+    margin-left: 16px !important;
+}
+
+.DomTooltipOuter.left>.DomTooltipInner>.l {
+    background-position: 0% 50%;
+    top: 7px;
+}
+
+.DomTooltipOuter.left>.DomTooltipInner>.lt {
+    background-position: 0px -9px;
+}
+
+.DomTooltipOuter.left>.DomTooltipInner>.lb {
+    background-position: 0px -16px;
+}
+
+.DomTooltipOuter.left>.DomTooltipInner>.bg {
+    left: 16px;
+}
+
+/** Right Attached **/
+
+.DomTooltipOuter.right>.DomTooltipInner>.r,
+.DomTooltipOuter.right>.DomTooltipInner>.rt,
+.DomTooltipOuter.right>.DomTooltipInner>.rb {
+    width: 16px !important;
+}
+
+.DomTooltipOuter.right>.DomTooltipInner>.t,
+.DomTooltipOuter.right>.DomTooltipInner>.b {
+    right: 16px !important;
+}
+
+.DomTooltipOuter.right>.DomTooltipInner>.content {
+    margin-right: 16px !important;
+}
+
+.DomTooltipOuter.right>.DomTooltipInner>.r {
+    background-position: 33% 50%;
+    top: 7px;
+}
+
+.DomTooltipOuter.right>.DomTooltipInner>.rt {
+    background-position: -16px -9px;
+}
+
+.DomTooltipOuter.right>.DomTooltipInner>.rb {
+    background-position: -16px -16px;
+}
+
+.DomTooltipOuter.right>.DomTooltipInner>.bg {
+    right: 16px;
+}
+
+/** Top Attached **/
+.DomTooltipOuter.top>.DomTooltipInner>.lt,
+.DomTooltipOuter.top>.DomTooltipInner>.t,
+.DomTooltipOuter.top>.DomTooltipInner>.rt {
+    height: 16px !important;
+}
+
+.DomTooltipOuter.top>.DomTooltipInner>.l,
+.DomTooltipOuter.top>.DomTooltipInner>.r {
+    top: 16px !important;
+}
+
+.DomTooltipOuter.top>.DomTooltipInner>.content {
+    padding-top: 25px !important;
+    padding-bottom: 10px !important;
+}
+
+.DomTooltipOuter.top>.DomTooltipInner>.t {
+    background-position: 50% 0% !important;
+}
+
+.DomTooltipOuter.top>.DomTooltipInner>.lt {
+    background-position: -9px 0px;
+}
+
+.DomTooltipOuter.top>.DomTooltipInner>.rt {
+    background-position: -16px 0px;
+}
+
+.DomTooltipOuter.top>.DomTooltipInner>.bg {
+    top: 16px;
+}
+
+/** Bottom Attached **/
+.DomTooltipOuter.bottom>.DomTooltipInner>.lb,
+.DomTooltipOuter.bottom>.DomTooltipInner>.b,
+.DomTooltipOuter.bottom>.DomTooltipInner>.rb {
+    height: 16px !important;
+}
+
+.DomTooltipOuter.bottom>.DomTooltipInner>.l,
+.DomTooltipOuter.bottom>.DomTooltipInner>.r {
+    bottom: 16px !important;
+}
+
+.DomTooltipOuter.bottom>.DomTooltipInner>.content {
+    padding-bottom: 25px !important;
+    padding-top: 10px !important;
+}
+
+.DomTooltipOuter.bottom>.DomTooltipInner>.b {
+    background-position: 50% 33% !important;
+}
+
+.DomTooltipOuter.bottom>.DomTooltipInner>.lb {
+    background-position: -9px -16px;
+}
+
+.DomTooltipOuter.bottom>.DomTooltipInner>.rb {
+    background-position: -16px -16px;
+}
+
+.DomTooltipOuter.bottom>.DomTooltipInner>.bg {
+    bottom: 16px;
+}

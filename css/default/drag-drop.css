@@ -1,0 +1,11 @@
+div.DOMDragDropTooltip {
+    display: block;
+    position: absolute;
+    max-width: 200px;
+    border: 1px solid black;
+    z-index: 10000000;
+    background-color: white;
+    font-size: 10px;
+    font-family: Arial;
+    padding: 4px;
+}

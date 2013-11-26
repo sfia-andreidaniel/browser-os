@@ -1,0 +1,419 @@
+function Terminal( cfg ) {
+    var holder = $('div');
+    
+    cfg = cfg || {};
+    
+    var DOManchors = {
+        "_dummy": function() {
+            try {
+                holder.vt100.resizer();
+            } catch (e) {}
+        }
+    };
+    
+    Object.defineProperty( holder, 'DOManchors', {
+        "get": function() {
+            return DOManchors;
+        },
+        "set": function( o ) {
+            o = o || {};
+            for ( var keys in DOManchors ) {
+                if (DOManchors.propertyIsEnumerable( keys ) && keys != '_dummy' )
+                    delete DOManchors[ keys ];
+            }
+            for( var keys in o ) {
+                if (o.propertyIsEnumerable( keys ) && keys != '_dummy' )
+                    DOManchors[ keys ] = o[ keys ];
+            }
+            return o;
+        }
+    } );
+    
+    
+    ( function() {
+        var readOnly = false;
+        
+        var readonly = function( e ) {
+            if ( readOnly )
+                cancelEvent( e );
+        };
+        
+        Object.defineProperty( holder, 'readOnly', {
+            
+            "get": function() {
+                return readOnly;
+            },
+            "set": function( boolVal ) {
+                readOnly = !!boolVal;
+            }
+            
+        } );
+        
+        holder.addEventListener('keydown', readonly, true );
+        
+    } )();
+    
+    ( function() {
+        
+        var visible = true;
+        
+        Object.defineProperty( holder, 'visible', {
+            "get": function() {
+                return hasStyle( holder, 'hidden' );
+            },
+            "set": function( boolValue ) {
+                
+                ( !!boolValue ? removeStyle : addStyle) ( holder, 'hidden' );
+                
+            }
+        } );
+        
+    } )();
+    
+    holder.setAttr('id', 'vt100');
+    
+    holder.tabIndex = 0;
+    
+    holder.focus = function() {
+        try {
+            holder.vt100.input.focus();
+            return true;
+        } catch (e) {
+            return true;
+        }
+    }
+    
+    holder.escapeShellArg = function( arg ) {
+        var ret = '';
+        ret = arg.replace(/[^\\]'/g, function (m, i, s) {
+            return m.slice(0, 1) + '\\\'';
+        });
+        return "'" + ret + "'";
+    };
+    
+    holder.addEventListener('focus', function() {
+        holder.focus();
+    }, true);
+    
+    Object.defineProperty( holder, 'connected', {
+        "get": function() {
+            try {
+                return holder.querySelector('#reconnect').style.visibility == 'hidden' &&
+                       holder.vt100.connected;
+            } catch (e) {
+                return false;
+            }
+        }
+    });
+    
+    holder.write = function( str ) {
+        if (!holder.connected)
+            throw "Cannot write while not connected!";
+        holder.vt100.keysPressed( str );
+    }
+    
+    Object.defineProperty( holder, 'value', {
+        "get": function() {
+            try {
+                return holder.querySelector('pre#console').textContent.toString().trim();
+            } catch (e) {
+                return '';
+            }
+        }
+    } );
+    
+    EnableCustomEventListeners( holder );
+    
+    (function() {
+        
+        holder.expect = function( what, howLong, failure ) {
+            what = what || [];
+            
+            if (!what.length)
+                return null;
+            
+            var now = (new Date()).getTime();
+            var len = what.length;
+            
+            var expect = function() {
+                
+                //console.log("Expect!");
+                
+                var matches;
+                var value = holder.value;
+                
+                for ( var i=0; i<len; i++) {
+                    //console.log( what[i].when, ".test( ", JSON.stringify( value ) , ")" );
+                    if ( matches = what[i].when.exec( value ) ) {
+                        what[i].then( matches );
+                        return true;
+                    }
+                }
+                
+                var time = ( new Date()).getTime();
+                
+                if ( time - now < howLong ) {
+                    setTimeout( expect, 100 );
+                } else {
+                    //console.warn("Expect: timed-out!");
+                    if (typeof failure != 'undefined')
+                        failure();
+                }
+            };
+            
+            expect();
+        };
+        
+    })();
+    
+    (function() {
+        var wasAttached = false;
+        
+        var onAttach = function() {
+            if ( holder.parentNode ) {
+                wasAttached = true;
+                new ShellInABox( cfg.part || '/shell/', holder );
+                holder.onCustomEvent( 'ready' );
+                monitorConnectionState();
+            } else setTimeout( onAttach, 50 );
+        };
+        
+        onAttach();
+        
+        Object.defineProperty( holder, 'ready', {
+            "get": function() {
+                return wasAttached && !!holder.parentNode;
+            }
+        } );
+        
+        var connectionState = false;
+        
+        function monitorConnectionState() {
+            var con;
+            if (holder.ready) {
+                if ( ( con = holder.connected ) != connectionState ) {
+                    connectionState = con;
+                    switch ( con ) {
+                        case true:
+                            holder.onCustomEvent('connect');
+                            break;
+                        case false:
+                            holder.onCustomEvent('disconnect');
+                            break;
+                    }
+                }
+            } else {
+                /* Check if the terminal is inserted into DOM */
+                var parent = holder.parentNode;
+                var connected = false;
+                while (parent) {
+                    if (!parent) {
+                        break;
+                    }
+                    if (parent.nodeName == 'BODY') {
+                        connected = true;
+                        break;
+                    }
+                    parent = parent.parentNode;
+                }
+                if ( !connected ) {
+                    
+                    return;
+                }
+            }
+            
+            setTimeout( monitorConnectionState, 1000 );
+        }
+        
+    })();
+    
+    var sendLogin = function( user, password ) {
+        
+        if (!holder.connected) {
+            holder.vt100.reconnect();
+            return;
+        }
+        
+        holder.write( user + "\n" );
+        
+        setTimeout( function() {
+        
+        holder.expect([
+                {
+                    "when": /Password\:$/,
+                    "then": function() {
+                        holder.write( password + "\n" );
+                        
+                        holder.expect([
+                            {
+                                "when": / login\:$/,
+                                "then": function() {
+                                    window.localStorage.terminal = false;
+                                    autoLogin();
+                                }
+                            },
+                            {
+                                "when": /\$$/,
+                                "then": function() {
+                                    if ( cfg.exec ) {
+                                        holder.write( cfg.exec.toString().concat( !cfg.execNoExit ? ( ' && exit' ) : '' ).concat('\n'));
+                                        holder.vt100.reset();
+                                        holder.onCustomEvent('exec');
+                                        holder.readOnly = false;
+                                    } else {
+                                        holder.readOnly = false;
+                                    }
+                                }
+                            }
+                        ], 2000, function() {
+                            holder.write("exit\n");
+                            return;
+                        })
+                        
+                    }
+                },
+                {
+                    "when": / login\:$/,
+                    "then": function() {
+                        window.localStorage.terminal = false;
+                        autoLogin();
+                    }
+                }
+            ],
+            3000,
+            function() {
+                window.localStorage.terminal = false;
+                alert("Failed: " + holder.value);
+                autoLogin();
+            }
+        );
+        }, 1000);
+        //alert('wrote: ' + user );
+    }
+    
+    var autoLogin = function() {
+        var upwd = null;
+        
+        try {
+            upwd = JSON.parse(
+                window.localStorage.terminal
+            );
+            
+            if (!upwd.user || !upwd.password)
+                throw "AutoLogin not parsed correctly!";
+                
+        } catch (e) {
+            upwd = null;
+        }
+        
+        if ( upwd !== null ) {
+            sendLogin( upwd.user, upwd.password );
+        } else {
+            var auth = new Dialog({
+                "childOf": getOwnerWindow( holder ) || null,
+                // "modal"  : true,
+                "width"  : 300,
+                "height" : 180,
+                "caption": "Login",
+                "appIcon": "data:image/gif;base64,R0lGODlhEAAQAPcAAJQqFOSeLJSWlGRiZPTOVPzelPyuVKxKLOTm5GxqbPz+nOS+VJxaPPy2LMRiRLS2tPzuhOy+bJw6JPzuxLRSNPz+3LxyTOyuLPzWhPzupIyOjPzGdJQyHKSmpPzeXHx6fPz+tLxaPPzGPKRqVMTGxOy+dLxSPPT29OymNIxiXPzOZPzmnPy2XJRSNOzu7HRydOzGXKRaPPy+JLRqTLy+vPz2fPy+bKRCLLxyVOyuNPzurJwyHKyurPz+vMRSPPz+/KAiAuQAABI6AAAAAFXg/x/i//gS/3cA/0AkASoAAPgCAHcAAP8ACv8ADf8ATP8AALDYT+SJOBJYTAB8AB40kMflH/wSjXcAAMjgIxricRMSTAAAAAAAA1wAABMAAAAAADQATgAA8AAATsAAAEQAAcYAAPwTAHcAAABFAAEAAAAAAAAAAKwADOPsABL9AAB/AAEIAAEAAAEKAAEAAKiQAeR8ABL4AAB3AFU4Ax8AAPgAAHcAACgBACUAAPgAAHcAgP8AA/8AAP8AAP8AAHxEAOTGABL8AAB3AGdUBzrlAFgSAHwAAAA0AAAAABMAAADAAACjIABDDwD4UAB3AGA0AJ0AABUAAADAABbUAADlAAASAMAAAABMAFyCABNXAAB8AACQAADlAAASAAAAAH5n8AAUIwBYjcB8AAAAAAAAAAAAAAAAAP8AvP8A/f8AS/8AAP8AGv9cAP8TAP8AAADhGgAbAABXAAB8AACiCAAU7QBYEgB8AACw/wDl/xMS/wAA/2zgAAAbAABXAAB8AAAAuDQA5lgAEnwAAAAYjlwA2BMASwAAAGPSmDQT5lhYEnx8ABb/ewD/8AD/TsD/AAG0zOXm5hISEgAAAAD70gETEwBYWAB8fBzcUuT65xJOEgAAAFyw5PgS/xJP/wAAf1zgOPgb5xJXEgB8AFWwAR/lAPgSAHcAACgA0iUAE/gAWHcAfP+gAf8MAP9QAP8AAFwAAeUAABIAAAAAAF/YABvlAFgSAHwAAAAWRwAAuxMWRwAAACH5BAEAAD8ALAAAAAAQABAABwjDAH8IHEjwh4ODBRMaLKGjhAOFAx1s0OFAR4SHAj9o1PjDR4aPH0MIfMEDwQkEPF5QiLCiZQQTP14IOEFCAw0XPFKsLBCBgsAEDzQk+JFAw4OhBzAcGCig6cAEHYbe2LDhBsQBPAb82GFDwkAcYHFYGGthxlYWLAD8sACjhoIfNTyIkHHBAgADPjj8mHGBAIQfBHJcaCDDLAC1P2JU6AHiR48KE1TIiFGQQd+/BC4MlsGgYIsFjB1DVhGgRcIWqFOnThgQADs="
+            });
+            
+            auth.insert(
+                new DOMLabel( 'User', {
+                    'x': 10,
+                    'y': 20
+                } )
+            );
+            
+            auth.insert(
+                new DOMLabel( 'Password', {
+                    'x': 10,
+                    'y': 50
+                } )
+            );
+            
+            auth.user = auth.insert(
+                (new TextBox( $_SESSION.UNAME || ''))
+                    .setAttr('placeholder', 'Server user')
+                    .setAnchors({
+                        "width": function(w,h) {
+                            return w - 100 + 'px';
+                        }
+                    })
+                    .setAttr(
+                        "style", "position: absolute; left: 80px; top: 20px;"
+                    )
+            );
+            
+            auth.password = auth.insert(
+                (new TextBox( '' ))
+                    .setAttr('type', 'password')
+                    .setAnchors({
+                        "width": function(w,h) {
+                            return w - 100 + 'px';
+                        }
+                    })
+                    .setAttr(
+                        "style", "position: absolute; left: 80px; top: 50px"
+                    )
+            );
+            
+            auth.insert( ( new Button('LogIn', auth.login = function() {
+                if (auth.user.value == '') {
+                    auth.user.focus(); return;
+                }
+                if (auth.password.value == '') {
+                    auth.password.focus(); return;
+                }
+                window.localStorage.terminal = JSON.stringify({
+                    "user": auth.user.value,
+                    "password": auth.password.value
+                });
+                
+                auth.close();
+                delete auth;
+                
+                autoLogin();
+            } ) )
+                .setAttr( "style", "position: absolute; left: 10px; bottom: 10px; position: absolute;" )
+            );
+            
+            auth.insert( ( new Button("Cancel", auth.cancel = function() {
+                auth.close();
+                delete auth;
+            } ) )
+                .setAttr( "style", "position: absolute; left: 70px; bottom: 10px; position: absolute;" )
+            );
+            
+            Keyboard.bindKeyboardHandler( auth, 'enter', auth.login );
+            Keyboard.bindKeyboardHandler( auth, 'esc', auth.cancel );
+            
+            auth.user.focus();
+            auth.user.select();
+        }
+    }
+    
+    if (cfg.autoLogin) {
+        holder.readOnly = true;
+        
+        holder.addCustomEventListener('connect', function() {
+            //console.log("Connected! Doing login!");
+            holder.expect( [
+                {
+                    "when": /login\:$/,
+                    "then": function() {
+                        autoLogin();
+                    }
+                }
+            ], 2000, function() {
+                DialogBox("Failed to communicate with terminal!", {
+                    "type": "error"
+                });
+            } );
+            
+            return true;
+        } );
+    }
+    
+    return holder;
+}

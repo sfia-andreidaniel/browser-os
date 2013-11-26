@@ -1,0 +1,7 @@
+.jside-focus {
+    outline: 3px solid red !important;
+}
+
+.DOM2Window.design-mode .DOM2WindowBody {
+    background-image: url(data:image/gif;base64,R0lGODlhCgAKAIABAAAAAP///yH+EUNyZWF0ZWQgd2l0aCBHSU1QACH5BAEKAAEALAAAAAAKAAoAAAIJRI6py+0Po2wFADs=);
+}

@@ -1,0 +1,5 @@
+-- onedb-jsplatform
+dialog
+terminal
+thumbnailer
+~ /\.(gif|png|jpg|jpeg)$/i

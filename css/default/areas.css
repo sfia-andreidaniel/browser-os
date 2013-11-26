@@ -1,0 +1,31 @@
+.DomScrollArea,
+.DomHScrollArea,
+.DomVScrollArea {
+    display: block;
+    border: 2px inset #ddd;
+    width: 100px;
+    height: 100px;
+}
+
+.DomScrollArea {
+    overflow: auto;
+}
+
+.DomVScrollArea {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.DomHScrollArea {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.DomScrollArea > div.inner,
+.DomHScrollArea > div.inner,
+.DomVScrollArea > div.inner {
+    display: block;
+    position: relative;
+    width: auto;
+    height: auto;
+}
