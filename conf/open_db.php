@@ -63,7 +63,7 @@
         
     start_mysql_connection();
     
-    function start_cli_environment($env_id) {
+    function start_cli_environment( $env_id ) {
     
         global $__DBADMIN__;
     

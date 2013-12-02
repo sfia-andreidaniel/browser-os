@@ -11,23 +11,6 @@ MMC2_ConfigRoot.push({
                 "id": "cmd_server_info_refresh",
                 "icon": "img/mmc2/serveri.gif"
             }
-        ],
-        "cmd_packager:": [
-            {
-                "caption": "Build Package",
-                "id": "cmd_package_build",
-                "icon": "img/mmc2/pkbuild.png"
-            },
-            {
-                "caption": "Download Package",
-                "id": "cmd_package_download",
-                "icon": "img/mmc2/pkdl.png"
-            },
-            {
-                "caption": "Install Package",
-                "id": "cmd_package_install",
-                "icon": "img/mmc2/pkinstall.png"
-            }
         ]
     },
     "create": function( app ) {
@@ -36,17 +19,6 @@ MMC2_ConfigRoot.push({
                 "name": "Server Information",
                 "id"  : "cmd_server_info",
                 "icon": "img/mmc2/serveri.gif"
-            },
-            {
-                "name": "Software Packages",
-                "id"  : "cmd_packager",
-                "icon": "img/mmc2/serverp.png",
-                "create": function() {
-                    var req = [];
-                    req.addPOST('do', 'enum-packages');
-                    var rsp = $_JSON_POST( 'vfs/lib/mmc2/handler-packager.php', req );
-                    return rsp || [];
-                }
             }
         ];
     }

@@ -20,26 +20,11 @@
     <!-- Google Chrome Frame Compatible Page -->
     
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script> -->
-
-    <!-- END of Google Chrome Frame Compatible Page -->
 
     <script type="text/javascript">
         var onloadFunc = [];
         function addOnload(func_name) { onloadFunc.push(func_name); }
         function bodyOnload() { for(var i=0; i<onloadFunc.length; i++) { onloadFunc[i](); } }
-        
-        /* Add Google Chrome Frame Compatible Startup Sequence */
-        /* addOnload(function() {
-            try {
-                CFInstall.check({
-                    mode: "overlay",
-                    destination: "http://<?php echo $_SERVER['SERVER_NAME']; ?>/"
-                });
-            } catch (GoogleException) {
-                
-            }
-        }); */
         /* End of Google Chrome Frame Compatible Startup Sequence */
     </script>
     
@@ -80,10 +65,6 @@
         /* TinyMCE wisiwig html editor */
     </script>
     
-    <script type="text/javascript" src="contrib/jwplayer/jwplayer.js">
-        /* JW MediaPlayer 5.9 */
-    </script>
-
     <script type="text/javascript">
         /* Start The Login Process... */
         addOnload(function() { AppExec('bin/jsystem_tray.app'); AppExec('bin/jlogon.app'); });

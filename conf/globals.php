@@ -1,1 +1,1 @@
-<?php $GLOBALS['__DBADMIN__'] = "jsplatform"; ?>
+<?php $GLOBALS['__DBADMIN__'] = "browseros"; ?>

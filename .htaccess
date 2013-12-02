@@ -19,11 +19,9 @@
 </IfModule>
 
 php_value session.auto_start 0
-php_value include_path .:/usr/share/php:/usr/share/pear:classes:classes/*:classes/OneDB/*
+php_value include_path .:/usr/share/php:/usr/share/pear:classes:classes/*
 php_value register_globals Off
-php_value zlib.output_compression 16386
-php_value post_max_size 800M
-php_value upload_max_filesize 800M
-php_value memory_limit 800M
-php_value xdebug.profiler_enable 0
-php_value auto_prepend_file /srv/jsplatform/classes/OneDB/_autostart.php
+php_value zlib.output_compression 16384
+php_value post_max_size 12M
+php_value upload_max_filesize 12M
+php_value memory_limit 64M
