@@ -1,7 +1,7 @@
 /* You are using an automatically generated CSS code with the help of the YUI Compressor
-Code was compiled on Friday 19th of July 2013 04:30:34 PM */
+Code was compiled on Monday 2nd of December 2013 10:31:37 AM */
 
-/* Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36 */
+/* Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36 */
 
  /* FILE: aceEditor.css */
 
@@ -2748,6 +2748,34 @@ div.HTMLEditor {
     margin: 0;
 }
 
+div.HTMLEditor .mce-resizehandle {
+    display: none;
+}
+
+div.HTMLEditor .mce-path {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div.HTMLEditor .mce-container-body.mce-flow-layout {
+    /* overflow: hidden;
+    max-height: 0px;
+    */
+    display: none;
+}
+
+div.HTMLEditor * {
+    border: none;
+    outline: none;
+}
+
+div.HTMLEditor iframe {
+    padding: 0px !important;
+    margin: none;
+    border: none !important;
+}
+
+/*
 div.HTMLEditor > .inner {
     width: 100%;
     height: 100%;
@@ -2989,6 +3017,7 @@ div.HTMLEditor > .inner > .toolbar > div > div.placeholder > div.dropdown > div.
     -webkit-user-select: none;
 }
 
+*/
  /* FILE: htmleditor-body.css */
 
 * {
@@ -5671,14 +5700,14 @@ input[disabled].DomSpinnerCtl {
 	top: -1px;
 	bottom: -1px;
 	width: 6px;
-	border: 1px outset #ddd;
-	background-color: #ddd;
+	border-left: 1px outset #888;
+	border-right: 1px outset #888;
+	background-color: #494949;
 	z-index: 2;
 	cursor: col-resize;
 	/* outline: 1px outset #ddd; */
 	/* display: none; */
 	margin-left: -2px;
-	-webkit-appearance: button;
 }
 
 .DomSplitterInner:hover>div.VSplitHandle{
@@ -5690,14 +5719,14 @@ input[disabled].DomSpinnerCtl {
 	left: -1px;
 	right: -1px;
 	height: 6px;
-	border: 1px outset #ddd;
-	background-color: #ddd;
+	border-top: 1px outset #888;
+	border-bottom: 1px outset #888;
+	background-color: #494949;
 	z-index: 2;
 	cursor: row-resize;
 	/* outline: 1px outset #ddd; */
 	/* display: none; */
 	margin-top: -2px;
-	-webkit-appearance: button;
 }
 
 div.SplitV>div.DomSplitter,
