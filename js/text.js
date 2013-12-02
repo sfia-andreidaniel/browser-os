@@ -25,6 +25,7 @@
 function TextBox(initString, settings, inpTypeString) {
 
     var inp = $( !!!inpTypeString ? 'input' : inpTypeString );
+
     if (!!!inpTypeString || inpTypeString == 'text')
         inp.setAttribute('type', 'text');
     

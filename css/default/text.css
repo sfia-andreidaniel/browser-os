@@ -5,6 +5,7 @@ textarea {
   border: 2px inset #ddd;
   vertical-align: top;
   resize: none;
+  width: auto;
 }
 
 input[type=text]:disabled,

@@ -56,7 +56,7 @@ function LogonLoader(showMenu) {
         var dlg = $export("0001-dlg", (new Dialog({
             "alwaysOnTop": false,
             "appIcon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADSwAAA0sBr9neAQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJ6SURBVDiNhZNNSJRRFIaf833fmGPO4KRO/iQaaYWUVGBjINiixayiFgYF0cIgiNq0kdaRYG1cZIsighZF0g+lhBG1qKQfKyREa5SmHytUGGlER+ebuaeF4zCJ0Nnee5577vueV1SV5RIRAQoAYfVSIAUkNdPo5J7u2UCgO8RTVSxZupzbKQI6Mc/A/n7OAItZgIhYgLW3DP/OYnb0fqPPwEx2MlCjWJv8NJV5aQQ8WYCI2PX19Q3GmMqElQxSbLj6Kjkwmij4AhgAy7JSkUjkZV+Yy0EvNbmTOUB+aWnpdZ/P11BU6FU6eqj4evC8zqZytbEikUilJUvAlQBRVZmcnLwfeT7YyQl5E39HuG+MKCDBYHB7KBS6CwRcgyet2EBARBSYX9ZALcty/Xn8yaJ7hscA8gs89ITr8N4bGX6xpYTNhXlw5Nd3oqNDtLc2OytHAnBNxp3bl04n4tN22+PqLobGD2+s/X1y3RpTSdHxCQIlRYCsCqhZy7bqAg9b44N26XSUipowRycfUuvDLfQQx3csBhRlbVwuI6QBLjZx4Vy4jvjAfFfQ9UDHNTh18xbA6yneI7IspuMAqKqoqv1hmrhcoQoIsG/kI0/KDqz/EdPdnw896O2llqXdsDjrdIMokOeQ2Ti/39/S3Nz8SESMqtptjZXcqA52prypdOa1mKrOiIg30wyw4ADu3NzcHdd1d2W/Yozn0+wiC0k3ZpLJ2NTU1HjGrXwgHzVW5qotLAXHA9g5cgToGf7J4LN+THoGEcW2U4go6bRNsCqESSdob21xMqlK5oopIhbR0SFKyitAyv/1SAWTTjAz/RZYkNw45wD+F2sAF0j+BfZN96LjG/zsAAAAAElFTkSuQmCC",
-            "caption": "Login to JSPlatform",
+            "caption": "Login to BrowserOS",
             "closeable": false,
             "height": 366,
             "maximizeable": false,
@@ -78,22 +78,38 @@ function LogonLoader(showMenu) {
             });
             this.addClass("PID-" + $pid);
         }));
+        
+        addStyle( dlg, navigator.userAgent.match( /webkit/i ) ? '' : 'need-webkit' );
     
         $export("0001-img", (new DOMImage({
             "src": "img/vector/jsplatform.svg",
             "displayMode": "best"
         })).setAttr("style", "top: 0px; left: 0px; right: 0; bottom: 0; position: absolute; border: none"));
     
-        var loginUser = $export("0001-text", (new TextBox("")).setAttr("style", "top: 140px; left: 125px; position: absolute; margin: 0; right: 55px").setProperty("placeholder", "John Doe"));
+        dlg.insert( $('div', 'webkit' ) );
     
-        var loginPass = $export("0002-text", (new TextBox("")).setProperty("type", "passsword").setAttr("style", "top: 185px; left: 125px; position: absolute; margin: 0; right: 55px").setProperty("placeholder", "Type here your secret password").setAttr('type', 'password') );
+        var loginUser = $export("0001-text", (new TextBox("")).setAttr("style", "top: 140px; left: 125px; position: absolute; display: block;").setProperty("placeholder", "John Doe").setAnchors({
+            "width": function(w,h){
+                return w - 190 + 'px';
+            }
+        }));
+    
+        var loginPass = $export("0002-text", (new TextBox("")).setProperty("type", "passsword").setAttr("style", "top: 185px; left: 125px; position: absolute; margin: 0").setProperty("placeholder", "Type here your secret password").setAttr('type', 'password').setAnchors({
+            "width": function(w,h) {
+                return w - 190 + "px";
+            }
+        }) );
     
         var authSources = $export("0001-drop", (new DropDown(undefined)).setItems( ( function() {
             return $_JSON_POST( 'vfs/bin/jlogon.app/bin/auth_sources.php', [] ) || [ {
                 "id": "",
                 "name": "Local Authentication"
             } ]
-        } )() ).setAttr("style", "top: 235px; left: 125px; position: absolute; margin: 0; right: 255px"));
+        } )() ).setAttr("style", "top: 235px; left: 125px; position: absolute; margin: 0").setAnchors({
+            "width": function(w,h) {
+                return w - 390 + "px";
+            }
+        }));
     
         $export("0001-lbl", (new DOMLabel("Username:", { "for": loginUser })).setAttr("style", "top: 145px; left: 50px; width: 70px; position: absolute; text-overflow: ellipsis"));
     

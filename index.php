@@ -19,13 +19,10 @@
     
     <!-- Google Chrome Frame Compatible Page -->
     
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
     <script type="text/javascript">
         var onloadFunc = [];
         function addOnload(func_name) { onloadFunc.push(func_name); }
         function bodyOnload() { for(var i=0; i<onloadFunc.length; i++) { onloadFunc[i](); } }
-        /* End of Google Chrome Frame Compatible Startup Sequence */
     </script>
     
     <script type="text/javascript" src="<?php 
