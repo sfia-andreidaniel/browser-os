@@ -28,7 +28,12 @@ TO INSTALL BROWSER OS:
     
     mysql > CREATE DATABASE browserfs
 
-6. populate the database with default tables
+6. edit files:
+    
+    /conf/globals.php -> specify the name of your mysql database
+    /conf/open_db.php -> specify the mysql connection settings
+
+7. populate the database with default tables
     
         cat install/database.sql | \
         mysql --user=<your_mysql_user> \
@@ -36,12 +41,12 @@ TO INSTALL BROWSER OS:
               --host=<your_mysql_host> \
               browserfs
 
-7. restart apache
+8. restart apache
     
     /etc/init.d/apache2 restart
 
-8. open a browser to your browser fs apache2 vhost:
+9. open a browser to your browser fs apache2 vhost:
     
     http://localhost/
     
-9. username = "root", password="toor". enjoy
+10. username = "root", password="toor". enjoy
