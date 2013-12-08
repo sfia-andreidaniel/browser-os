@@ -126,12 +126,12 @@
             if (!is_array( $data ))
                 die("Unserializeable data!");
             
-            $data['name'] = mysql_escape_string( $data['name'] );
-            $data['databaseName'] = mysql_escape_string( $data['databaseName'] );
+            $data['name'] = mysql_real_escape_string( $data['name'] );
+            $data['databaseName'] = mysql_real_escape_string( $data['databaseName'] );
             
             if ( "$data[id]" == '' ) {
                 
-                $data['startup'] = mysql_escape_string( $data['startup'] );
+                $data['startup'] = mysql_real_escape_string( $data['startup'] );
                 
                 //attempt to create the session in mysql
                 $sql = "INSERT INTO $__DBADMIN__.admin_servers (
@@ -194,7 +194,7 @@
                 
                 if ($data['id'] > 0 ) {
                 
-                    $data['startup'] = mysql_escape_string( $data['startup'] );
+                    $data['startup'] = mysql_real_escape_string( $data['startup'] );
                     
                     $sql = "UPDATE $__DBADMIN__.admin_servers
                             SET name='$data[databaseName]', startup='$data[startup]', description='$data[name]'
@@ -223,8 +223,8 @@
                 /* Update admin defines */
                 foreach ($data['variables'] as $variable ) {
                     
-                    $variable['name'] = mysql_escape_string( $variable['name'] );
-                    $variable['value']= mysql_escape_string( $variable['value'] );
+                    $variable['name'] = mysql_real_escape_string( $variable['name'] );
+                    $variable['value']= mysql_real_escape_string( $variable['value'] );
                     
                     $sql = "INSERT INTO $__DBADMIN__.admin_defines ( `server`, `name`, `value` )
                             VALUES ( $data[id], '$variable[name]', '$variable[value]' )";

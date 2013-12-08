@@ -107,13 +107,13 @@
         
             $data['enabled'] = $data['enabled'] ? 1 : 0;
             $data['expireDate'] = strlen( $data['expireDate'] ) 
-                ? ( "'" . mysql_escape_string( $data['expireDate'] ) . "'" ) 
+                ? ( "'" . mysql_real_escape_string( $data['expireDate'] ) . "'" ) 
                 : "NULL";
             
-            $data['email'] = mysql_escape_string( $data['email'] );
-            $data['phone'] = mysql_escape_string( $data['phone'] );
-            $data['description'] = mysql_escape_string( $data['description'] );
-            $data['name'] = mysql_escape_string( $data['name'] );
+            $data['email'] = mysql_real_escape_string( $data['email'] );
+            $data['phone'] = mysql_real_escape_string( $data['phone'] );
+            $data['description'] = mysql_real_escape_string( $data['description'] );
+            $data['name'] = mysql_real_escape_string( $data['name'] );
             
         
             if ( isset( $data['password'] ) ) {

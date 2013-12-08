@@ -426,7 +426,7 @@
                 
                     $entityType = 'u';
                 
-                    $sql = "SELECT id FROM $__DBADMIN__.admin_auth WHERE user='" . mysql_escape_string( $entityName ) . "' LIMIT 1";
+                    $sql = "SELECT id FROM $__DBADMIN__.admin_auth WHERE user='" . mysql_real_escape_string( $entityName ) . "' LIMIT 1";
                     break;
                 
                 case 'group':
@@ -434,7 +434,7 @@
                     
                     $entityType = 'g';
                     
-                    $sql = "SELECT gid FROM $__DBADMIN__.admin_groups WHERE name='" . mysql_escape_string( $entityName ) . "' LIMIT 1";
+                    $sql = "SELECT gid FROM $__DBADMIN__.admin_groups WHERE name='" . mysql_real_escape_string( $entityName ) . "' LIMIT 1";
                     break;
                 
                 default:

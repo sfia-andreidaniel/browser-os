@@ -7,7 +7,7 @@
     
     set_time_limit(60);
 
-    $uname = (isset($_POST['uname']) and (strlen($_POST['uname']))) ? mysql_escape_string($_POST['uname']) : false;
+    $uname = (isset($_POST['uname']) and (strlen($_POST['uname']))) ? mysql_real_escape_string($_POST['uname']) : false;
     $pass  = (isset($_POST['pass']) and (strlen($_POST['pass']))) ? md5($_POST['pass']) : md5('');
     $auth_source = isset($_POST['auth-source']) ? $_POST['auth-source'] : '';
     
@@ -52,7 +52,7 @@
             
             $auth = new $className(isset($cfg['config']) ? $cfg['config'] : array());
             
-            $uname = mysql_escape_string(
+            $uname = mysql_real_escape_string(
         	$auth->login($uname, isset($_POST['pass']) ? $_POST['pass'] : die("Which pass?"))
 	    );
             

@@ -121,7 +121,7 @@
                 $users[$i]['acls'][] = "$acl[code]=$acl[id]=".ACLCalculate($users[$i], $acl);
             }
         
-            $users[$i]['acls'] = mysql_escape_string(implode("\n", $users[$i]['acls']));
+            $users[$i]['acls'] = mysql_real_escape_string(implode("\n", $users[$i]['acls']));
         
             if (!mysql_query("UPDATE $__DBADMIN__.admin_auth SET policy_timestamp = UNIX_TIMESTAMP(), policies = '".$users[$i]['acls']."' WHERE id= ".$users[$i]['uid']." LIMIT 1", $mysql_conn))
                 $warnings[] = "Error updating policies for user '".$users[$i]['user']."'\n";

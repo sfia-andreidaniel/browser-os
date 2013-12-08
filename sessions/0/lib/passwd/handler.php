@@ -5,7 +5,7 @@
     
     if (!isset($_SESSION['UNAME']) or strlen($_SESSION['UNAME']) == 0) die("Sorry, we could not determine your user name. Check if you are logged in to system!");
     
-    $user = mysql_escape_string($_SESSION['UNAME']);
+    $user = mysql_real_escape_string($_SESSION['UNAME']);
     
     //check if old password is valid
     

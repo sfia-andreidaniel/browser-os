@@ -89,8 +89,8 @@
             if (!is_array( $data ) )
                 die("Unserializeable data!");
             
-            $data['name'] = mysql_escape_string( $data['name'] );
-            $data['description'] = mysql_escape_string( $data['description'] );
+            $data['name'] = mysql_real_escape_string( $data['name'] );
+            $data['description'] = mysql_real_escape_string( $data['description'] );
             
             if ( strlen( "$data[id]" ) == 0 ) {
                 //we do a database insert

@@ -99,7 +99,7 @@
                 ) throw new Exception("Error: Account is disabled");
             }
             
-            $user = mysql_escape_string(trim($loginResponse['user']));
+            $user = mysql_real_escape_string(trim($loginResponse['user']));
             
             //Checks if there is a user name mismatch on JSPlatform (the same userID, but different userName)
             $sql = "SELECT id, foreign_id, user FROM $__DBADMIN__.admin_auth WHERE user='$user' LIMIT 1";
@@ -127,10 +127,10 @@
                             '$user',
                             MD5(''),
                             ". (isset($this->_config['autoEnable']) ? (int)$this->_config['autoEnable'] : '1') .",
-                            ". (isset($this->_config['autoExpire']) ? ("'".mysql_escape_string($this->_config['autoExpire'])."'") : 'NULL') .",
-                            '".( isset($loginResponse['email']) ? mysql_escape_string($loginResponse['email']) : '' )."',
-                            '".( isset($loginResponse['phone']) ? mysql_escape_string($loginResponse['phone']) : '' )."',
-                            '".( isset($loginResponse['description']) ? mysql_escape_string($loginResponse['description']) : '')."',
+                            ". (isset($this->_config['autoExpire']) ? ("'".mysql_real_escape_string($this->_config['autoExpire'])."'") : 'NULL') .",
+                            '".( isset($loginResponse['email']) ? mysql_real_escape_string($loginResponse['email']) : '' )."',
+                            '".( isset($loginResponse['phone']) ? mysql_real_escape_string($loginResponse['phone']) : '' )."',
+                            '".( isset($loginResponse['description']) ? mysql_real_escape_string($loginResponse['description']) : '')."',
                             0,
                             ''
                         )";
@@ -153,7 +153,7 @@
                 
                 //echo "$groupName\n";
                 
-                $groupName = mysql_escape_string($groupName);
+                $groupName = mysql_real_escape_string($groupName);
                 $sql = "SELECT gid FROM $__DBADMIN__.admin_groups WHERE name = '$groupName' LIMIT 1";
                 $result = mysql_query($sql, $mysql_conn);
                 

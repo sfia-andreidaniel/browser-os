@@ -151,9 +151,9 @@
                 
             $data['id'] = (int)$data['id'];
             
-            $data['name'] = mysql_escape_string( $data['name'] );
-            $data['code'] = mysql_escape_string( $data['code'] );
-            $data['description'] = mysql_escape_string( $data['description'] );
+            $data['name'] = mysql_real_escape_string( $data['name'] );
+            $data['code'] = mysql_real_escape_string( $data['code'] );
+            $data['description'] = mysql_real_escape_string( $data['description'] );
             $data['enabled'] = (int)$data['enabled'];
             $data['defaultAction'] = (int)$data['defaultAction'];
             
