@@ -11,3 +11,7 @@ BrowserOS is a web operating system providing the following functionalities:
 - multi-desktop
 - multi-user
 - multi-tasking
+
+## Take a ride in BrowserOS
+
+visit: http://www.browserfs.com/products/browser+os/demo/
