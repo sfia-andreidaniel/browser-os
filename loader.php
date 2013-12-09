@@ -99,6 +99,24 @@
         return $buffer;
     }
     
+    function embed_resources( $buffer, $fileName ) {
+    
+        if ( !preg_match( '/\.(css|js)$/i', $fileName ) )
+            return $buffer;
+    
+        $dir = dirname( $fileName ) . '/';
+    
+        while ( preg_match( '/\{\$include (.*)\}/', $buffer, $matches ) ) {
+            $fname = $dir . $matches[1];
+            if ( file_exists( $fname ) ) {
+                $contents = base64_encode( file_get_contents( $fname ) );
+                $buffer = str_replace( $matches[0], $contents, $buffer );
+            } else $buffer = str_replace( $matches[0], '', $buffer );
+        }
+    
+        return $buffer;
+    }
+    
     function get_json_folder($f) {
         $out = array();
         $files = scandir($f);
@@ -112,11 +130,11 @@
                 
                     if (preg_match('/\.js$/i', $file ) ) {
                         $js[] = "\n\n/* FILE: $file */\n"
-                                . ensure_compat( $file, file_get_contents( "$f/$file" ) );
+                                . embed_resources( ensure_compat( $file, file_get_contents( "$f/$file" ) ), "$f/$file" );
                     } else
                     $out[] = array(
                         'name'=>$file,
-                        'data'=>ensure_compat($file, file_get_contents("$f/$file"))
+                        'data'=> embed_resources( ensure_compat($file, file_get_contents("$f/$file")), "$f/$file" )
                     );
                 }
             }
@@ -127,7 +145,7 @@
                 if (is_file("$f/$file")) {
                     $out[] = array(
                         'name'=>$file,
-                        'data'=>ensure_compat($file, file_get_contents("$f/$file"))
+                        'data'=>embed_resources( ensure_compat($file, file_get_contents("$f/$file") ), "$f/$file" )
                     );
                 }
             }
